@@ -28,9 +28,9 @@ module.exports = function (defaults) {
   return require('@embroider/compat').compatBuild(app, Webpack, {
     staticAddonTestSupportTrees: true,
     staticAddonTrees: true,
-    //staticHelpers: true,
+    staticHelpers: true,
     staticModifiers: true,
-    staticComponents: true,
+    //staticComponents: true,
     splitAtRoutes: [],
     packagerOptions: {
       // publicAssetURL is used similarly to Ember CLI's asset fingerprint prepend option.
