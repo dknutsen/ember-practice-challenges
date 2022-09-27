@@ -58,12 +58,18 @@ export default class DeepTrackingComponent extends Component {
 
   @action
   onNewTodo(title) {
-    this.todos.push(title);
+    // make sure the `todos` ref is set to a new value (new array)
+    // rather than mutating the original array since tracking on
+    // reference types is shallow
+    this.todos = [...this.todos, title];
   }
 
   @action
   markDone(index) {
-    this.todos.splice(index, 1);
+    // make sure the `todos` ref is set to a new value (new array)
+    // rather than mutating the original array since tracking on
+    // reference types is shallow
+    this.todos = this.todos.filter((v, i) => i !== index);
   }
 
   <template>
