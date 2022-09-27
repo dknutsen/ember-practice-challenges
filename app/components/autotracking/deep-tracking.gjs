@@ -49,7 +49,7 @@ const ListItem = <template>
     >
       Done
     </button>
-    {{@item}}
+    <span data-test-item-attribute="title">{{@item}}</span>
   </li>
 </template>
 
@@ -58,13 +58,12 @@ export default class DeepTrackingComponent extends Component {
 
   @action
   onNewTodo(title) {
-    //this.todos.push(title);
-    this.todos = [...this.todos, title];
+    this.todos.push(title);
   }
 
-  @action markDone(index) {
-    //this.todos.splice(index, 1);
-    this.todos = this.todos.filter((v, i) => i !== index);
+  @action
+  markDone(index) {
+    this.todos.splice(index, 1);
   }
 
   <template>
