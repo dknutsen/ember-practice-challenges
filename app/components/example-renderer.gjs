@@ -6,7 +6,10 @@ const components = {
 const whichToRender = (name) => components[name];
 
 export default <template>
-  {{#let (whichToRender @currentExample) as |Example|}} 
-    <Example />
-  {{/let}}
+  <div class="p-2">
+    <h2 class="font-bold text-lg">{{@currentExample}}</h2>
+    {{#let (whichToRender @currentExample) as |Example|}} 
+      <Example />
+    {{/let}}
+  </div>
 </template>

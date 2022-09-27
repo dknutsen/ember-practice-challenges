@@ -67,6 +67,7 @@ export default class DeepTrackingComponent extends Component {
   }
 
   <template>
+    <h3 class="font-bold">Todos</h3>
     <NewItemForm @onNewTodo={{this.onNewTodo}} />
     <ul>
       {{#each this.todos as |item index|}}
