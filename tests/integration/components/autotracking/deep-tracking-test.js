@@ -10,7 +10,7 @@ const listItemTitle = (title) => `[data-test-list-item="${title}"] [data-test-it
 const listItemDone  = (title) => `[data-test-list-item="${title}"] [data-test-action="done"]`;
 
 module(
-  'Integration | Component | autotracking/deep-tracking',
+  'Challenges | Autotracking | deep-tracking',
   function (hooks) {
     setupRenderingTest(hooks);
 
@@ -24,6 +24,7 @@ module(
       assert.dom(listItemTitle('item 1')).hasText('item 1', '"item 1" has label "item 1"');
       assert.dom(listItemDone('item 1')).exists('the list item has a "Done" button');
       assert.dom(listItemDone('item 1')).hasText('Done', 'the done button has text "Done"');
+      assert.dom(newItemInput).hasValue('', 'the input value has been cleared');
     });
 
     test('marking a todo as "Done" removes it from the list', async function (assert) {
