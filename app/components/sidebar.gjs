@@ -1,11 +1,13 @@
+import Component from '@glimmer/component';
 import { LinkTo } from '@ember/routing';
 import { array, component, hash } from '@ember/helper';
+import challenges from '../challenges';
 
 const join = (segments) => segments.join('.');
 
 const SidebarItem = <template>
   <li class="p-1">
-    <LinkTo @query={{hash id=(join (array @prefix @id))}}>{{@title}}</LinkTo>
+    <LinkTo @route={{if @route @route "index"}} @query={{hash id=(join (array @prefix @id))}}>{{@title}}</LinkTo>
   </li>
 </template>
 
@@ -16,15 +18,12 @@ const SidebarCategory = <template>
 
 export default <template>
   <ul class="w-64 p-2">
-    <SidebarCategory @title="Autotracking" @id="autotracking" as |Item|>
-      <Item @id="e01" @title="01: basic autotracking" />
-      <Item @id="e02" @title="02: deep autotracking" />
-    </SidebarCategory>
-    <SidebarCategory @title="Accessibility" @id="accessibility" as |Item|>
-      <Item @id="e01" @title="01: basic accessibility test" />
-    </SidebarCategory>
-    <SidebarCategory @title="Ember Data" @id="ember-data" as |Item|>
-      <Item @id="e01" @title="01: model attribute" />
-    </SidebarCategory>
+    {{#each-in challenges as |catId category|}}
+      <SidebarCategory @title={{category.title}} @id={{catId}} as |Item|>
+        {{#each-in category.challenges as |cid challenge index|}}
+          <Item @id={{cid}} @title={{challenge.title}} @route={{challenge.route}} /> 
+        {{/each-in}}
+      </SidebarCategory>
+    {{/each-in}}
   </ul>
 </template>

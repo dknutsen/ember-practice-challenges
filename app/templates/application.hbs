@@ -5,7 +5,8 @@
     <Sidebar />
   </div>
   <div class="flex-1 h-full overflow-y-scroll">
-    <ExampleRenderer @currentExample={{this.id}} />
+    <ChallengeRenderer @currentChallenge={{this.id}}>
+      {{outlet}}
+    </ChallengeRenderer>
   </div>
-  {{outlet}}
 </div>
