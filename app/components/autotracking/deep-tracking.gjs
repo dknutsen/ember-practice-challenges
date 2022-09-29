@@ -40,10 +40,11 @@ class NewItemForm extends Component {
 }
 
 const ListItem = <template>
-  <li data-test-list-index={{@index}} data-test-list-item={{@item}}>
+  <li data-test-list-index={{@index}} data-test-list-item={{@item}} class="my-1">
     {{!-- FIXME: replace with ui button --}}
     <button
       data-test-action="done"
+      class="px-2 bg-green-500"
       type="button"
       {{on "click" @onDoneClicked}}
     >
