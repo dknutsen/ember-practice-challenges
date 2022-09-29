@@ -7,7 +7,7 @@ const join = (segments) => segments.join('.');
 
 const SidebarItem = <template>
   <li class="p-1">
-    <LinkTo @query={{hash id=(join (array @prefix @id))}}>{{@title}}</LinkTo>
+    <LinkTo @route={{if @route @route "index"}} @query={{hash id=(join (array @prefix @id))}}>{{@title}}</LinkTo>
   </li>
 </template>
 
@@ -21,7 +21,7 @@ export default <template>
     {{#each-in challenges as |catId category|}}
       <SidebarCategory @title={{category.title}} @id={{catId}} as |Item|>
         {{#each-in category.challenges as |cid challenge index|}}
-          <Item @id={{cid}} @title={{challenge.title}} /> 
+          <Item @id={{cid}} @title={{challenge.title}} @route={{challenge.route}} /> 
         {{/each-in}}
       </SidebarCategory>
     {{/each-in}}
