@@ -1,0 +1,15 @@
+<div class="font-bold text-lg">{{this.fullName}}</div>
+<div class="p-2">
+  {{#if (not this.editing)}}
+    <dl class="table">
+      {{#each-in (hash firstName="First Name" lastName="Last Name" email="Email") as |attribute label|}}
+        <div class="flex justify-between table-row">
+          <dt class="table-cell p-1 font-extralight">{{label}}</dt>
+          <dd class="table-cell p-1 pl-3">{{get this.user attribute}}</dd>
+        </div>
+      {{/each-in}}
+    </dl>
+  {{else}}
+
+  {{/if}}
+</div>

@@ -25,7 +25,8 @@ export default <template>
     <h2 class="font-bold text-lg mb-2">{{challengeTitle @currentChallenge}}</h2>
 
     {{!-- Render the challenge notes --}}
-    <div class="mb-4">{{challengeNotes @currentChallenge}}</div>
+    <div class="mb-2">{{challengeNotes @currentChallenge}}</div>
+    <div class="mb-4"><a href="/tests?filter={{@currentChallenge}}" target="_blank" rel="noopener noreferrer" class="underline text-blue-500">Open challenge tests</a></div>
 
     {{!-- Render the challenge component, if there is one --}}
     <div id="challenge-zone" class="relative p-2 pt-4 border-dashed border-2 border-gray-400">
