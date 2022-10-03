@@ -9,8 +9,8 @@ export default Component.extend({
   bordered: false,
   active:   true,
 
-  editing:  false,
-  user:     null,
+  editing: false,
+  user:    null,
 
   fullName: computed('user.firstName', 'user.lastName', function() {
     return `${this.user.firstName} ${this.user.lastName}`;
@@ -19,6 +19,6 @@ export default Component.extend({
   actions: {
     save() {
       this.user.save();
-    }
-  }
+    },
+  },
 });

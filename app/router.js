@@ -11,4 +11,8 @@ Router.map(function () {
     this.route('route-model');
     this.route('nested-routes');
   });
+
+  this.route('basics', function () {
+    this.route('loading-models');
+  });
 });

@@ -19,7 +19,11 @@ export default {
     challenges: {
       'defining-route': { title: 'Defining a Route' }, // define routes, plain and with dynamic segment
       'defining-model': { title: 'Defining a Model' }, // create a model (unit test it for completion)
-      'loading-models': { title: 'Loading Models' }, // load query in route and render in template
+      'loading-models': {
+        // load query in route and render in template
+        title: 'Loading Models',
+        route: 'basics.loading-models',
+      },
       'defining-links': { title: 'Defining Links' }, // internal and external links
       'defining-component': { title: 'Defining a Component' }, // define a basic read-only component
       'define-service': { title: 'Defining a Service' }, // define simple service (clock?) and inject
@@ -31,7 +35,7 @@ export default {
       'deep-tracking': {
         title: 'Deep Tracking',
         notes: 'Autotracking simple data types is straightforward, but with complex reference types like arrays or objects there is more nuance. In this challenge we need to fix a todo app so that it can successfully add and remove todos.',
-        component: DeepTracking
+        component: DeepTracking,
       },
     },
   },
@@ -46,13 +50,16 @@ export default {
   routing: {
     title: 'Routing',
     challenges: {
-      'route-model': { title: 'Forwarding Parent Model', route: 'routing.route-model' },
+      'route-model': {
+        title: 'Forwarding Parent Model',
+        route: 'routing.route-model',
+      },
       'nested-routes': {
         title: 'Nested Routes',
         notes: 'Nested routes are an important concept when working with the Ember Router. In this challenge we want to create a parent route with two child routes that show different data from the parent model',
         route: 'routing.nested-routes',
       },
-      'transitions': { title: 'Transitions' }, // transitions via router service and redirects
+      transitions: { title: 'Transitions' }, // transitions via router service and redirects
       'query-params': { title: 'Query Params' }, // add query params and transition with them
     },
   },
@@ -65,7 +72,7 @@ export default {
     challenges: {
       'async.actions': { title: 'Async Actions' },
       'ember-concurrency': { title: 'Ember Concurrency' },
-      'contagiousness': { title: 'Contagiousness' },
+      contagiousness: { title: 'Contagiousness' },
     },
   },
   'contextual-components': {
@@ -91,7 +98,7 @@ export default {
       },
       'glimmer-to-sfc': {
         title: 'Glimmer to SFC',
-        notes: 'In this challenge we\'ll refactor a Glimmer Component to a strict-mode SFC component. Your solution should be in one *.gjs file and comply with strict mode rules.',
+        notes: "In this challenge we'll refactor a Glimmer Component to a strict-mode SFC component. Your solution should be in one *.gjs file and comply with strict mode rules.",
       },
     },
   },

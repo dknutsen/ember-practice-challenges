@@ -1,6 +1,8 @@
 <div class="font-bold text-lg">{{this.fullName}}</div>
 <div class="p-2">
-  {{#if (not this.editing)}}
+  {{#if this.editing}}
+
+  {{else}}
     <dl class="table">
       {{#each-in (hash firstName="First Name" lastName="Last Name" email="Email") as |attribute label|}}
         <div class="flex justify-between table-row">
@@ -9,7 +11,5 @@
         </div>
       {{/each-in}}
     </dl>
-  {{else}}
-
   {{/if}}
 </div>
