@@ -14,6 +14,17 @@ import ClassicToGlimmer from './components/refactoring/classic-to-glimmer';
  * Each challenge can have a `component` and/or a `route`
  */
 export default {
+  basics: {
+    title: 'Ember Basics',
+    challenges: {
+      'defining-route': { title: 'Defining a Route' }, // define routes, plain and with dynamic segment
+      'defining-model': { title: 'Defining a Model' }, // create a model (unit test it for completion)
+      'loading-models': { title: 'Loading Models' }, // load query in route and render in template
+      'defining-links': { title: 'Defining Links' }, // internal and external links
+      'defining-component': { title: 'Defining a Component' }, // define a basic read-only component
+      'define-service': { title: 'Defining a Service' }, // define simple service (clock?) and inject
+    },
+  },
   autotracking: {
     title: 'Autotracking',
     challenges: {
@@ -35,17 +46,27 @@ export default {
   routing: {
     title: 'Routing',
     challenges: {
-      'route-model': { title: 'Route Model', route: 'routing.route-model' },
+      'route-model': { title: 'Forwarding Parent Model', route: 'routing.route-model' },
       'nested-routes': {
         title: 'Nested Routes',
         notes: 'Nested routes are an important concept when working with the Ember Router. In this challenge we want to create a parent route with two child routes that show different data from the parent model',
         route: 'routing.nested-routes',
       },
+      'transitions': { title: 'Transitions' }, // transitions via router service and redirects
+      'query-params': { title: 'Query Params' }, // add query params and transition with them
     },
   },
   'ember-data': {
     title: 'Ember Data',
     challenges: {},
+  },
+  async: {
+    title: 'Async',
+    challenges: {
+      'async.actions': { title: 'Async Actions' },
+      'ember-concurrency': { title: 'Ember Concurrency' },
+      'contagiousness': { title: 'Contagiousness' },
+    },
   },
   'contextual-components': {
     title: 'Contextual Components',
@@ -53,7 +74,12 @@ export default {
   },
   accessibility: {
     title: 'Accessibility',
-    challenges: {},
+    challenges: {
+      'form-control-labels': { title: 'Form Control Labels' },
+      'table-markup': { title: 'Table Markup' },
+      'color-contrast': { title: 'Color Contrast' },
+      'proper-headings': { title: 'Proper Headings' },
+    },
   },
   refactoring: {
     title: 'Refactoring',
