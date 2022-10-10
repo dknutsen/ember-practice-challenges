@@ -4,12 +4,12 @@ import { render, fillIn, click } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
 const newItemInput = '[data-test-input="newItemTitle"]';
-const newItemAdd = '[data-test-action="newItem"]';
+const newItemAdd = '[data-test-action="Add"]';
 const listItem = (title) => `[data-test-list-item="${title}"]`;
 const listItemTitle = (title) =>
   `[data-test-list-item="${title}"] [data-test-item-attribute="title"]`;
 const listItemDone = (title) =>
-  `[data-test-list-item="${title}"] [data-test-action="done"]`;
+  `[data-test-list-item="${title}"] [data-test-action="Done"]`;
 
 module('Challenges | autotracking.deep-tracking', function (hooks) {
   setupRenderingTest(hooks);
