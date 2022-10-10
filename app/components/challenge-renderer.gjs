@@ -19,24 +19,32 @@ const challengeNotes = (id) => {
   return cat?.challenges?.[challenge]?.notes;
 }
 
+const isPresent = (thing) => ![null, undefined, '', [], {}].includes(thing);
+
 export default <template>
   <div class="p-2">
     {{!-- Render the challenge title --}}
     <h2 class="font-bold text-lg mb-2">{{challengeTitle @currentChallenge}}</h2>
 
-    {{!-- Render the challenge notes --}}
-    <div class="mb-4">{{challengeNotes @currentChallenge}}</div>
+    {{#if (isPresent @currentChallenge)}}
+      {{!-- Render the challenge notes --}}
+      <div class="mb-2">{{challengeNotes @currentChallenge}}</div>
 
-    {{!-- Render the challenge component, if there is one --}}
-    <div id="challenge-zone" class="relative p-2 pt-4 border-dashed border-2 border-gray-400">
-      <span class="text-xs font-extralight absolute top-0 left-1">Challenge Zone</span>
+      {{!-- Render the challenge tests link --}}
+      <div class="mb-4"><a href="/tests?filter={{@currentChallenge}}" target="_blank" rel="noopener noreferrer" class="underline text-blue-500">Open challenge tests</a></div>
 
-      {{#let (whichToRender @currentChallenge) as |ChallengeComponent|}} 
-        <ChallengeComponent />
-      {{/let}}
-  
-      {{!-- this is where a route would be rendered for route-based challenges --}}
-      {{yield}}
-    </div>
+      {{!-- Render the "challenge zone" --}}
+      <div id="challenge-zone" class="relative p-2 pt-4 border-dashed border-2 border-gray-400">
+        <span class="text-xs font-extralight absolute top-0 left-1">Challenge Zone</span>
+
+        {{!-- Render the challenge component, if there is one --}}
+        {{#let (whichToRender @currentChallenge) as |ChallengeComponent|}} 
+          <ChallengeComponent />
+        {{/let}}
+
+        {{!-- this is where a route would be rendered for route-based challenges --}}
+        {{yield}}
+      </div>
+    {{/if}}
   </div>
 </template>

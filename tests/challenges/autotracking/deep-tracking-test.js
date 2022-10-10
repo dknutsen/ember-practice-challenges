@@ -11,7 +11,7 @@ const listItemTitle = (title) =>
 const listItemDone = (title) =>
   `[data-test-list-item="${title}"] [data-test-action="done"]`;
 
-module('Challenges | Autotracking | deep-tracking', function (hooks) {
+module('Challenges | autotracking.deep-tracking', function (hooks) {
   setupRenderingTest(hooks);
 
   test('editing title and submitting the form creates a new todo', async function (assert) {
