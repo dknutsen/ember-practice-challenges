@@ -3,7 +3,7 @@ import { setupRenderingTest } from 'practice-challenges/tests/helpers';
 import { render, click } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-const increment = '[data-test-action="increment"]';
+const increment = '[data-test-action="Increment"]';
 const message   = '[data-test-label="message"]';
 
 module('Challenges | autotracking.basic-tracking', function (hooks) {
