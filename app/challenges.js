@@ -1,3 +1,4 @@
+import BasicTracking from './components/autotracking/basic-tracking';
 import DeepTracking from './components/autotracking/deep-tracking';
 import ClassicToGlimmer from './components/refactoring/classic-to-glimmer';
 
@@ -32,6 +33,11 @@ export default {
   autotracking: {
     title: 'Autotracking',
     challenges: {
+      'basic-tracking': {
+        title: 'Basic Autotracking',
+        notes: 'Autotracking is how we make state reactive. Fix this counter component by making it autotrack state mutations and re-render accordingly.',
+        component: BasicTracking,
+      },
       'deep-tracking': {
         title: 'Deep Tracking',
         notes: 'Autotracking simple data types is straightforward, but with complex reference types like arrays or objects there is more nuance. In this challenge we need to fix a todo app so that it can successfully add and remove todos.',
