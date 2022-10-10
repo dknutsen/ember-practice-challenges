@@ -1,11 +1,12 @@
 import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { on } from '@ember/modifier';
 
 const isEmpty = (it) => it === '' || it === undefined || it === null;
 
 export default class BasicTracking extends Component {
-  count = 0;
+  @tracked count = 0;
 
   get message() {
     return `The count is: ${this.count}`;
