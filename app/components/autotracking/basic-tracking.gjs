@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { on } from '@ember/modifier';
+import Button from '../ui/button';
 
 const isEmpty = (it) => it === '' || it === undefined || it === null;
 
@@ -21,14 +22,11 @@ export default class BasicTracking extends Component {
     <div data-test-label="message">
       {{this.message}}
     </div>
-    {{!-- FIXME: replace with ui button --}}
-    <button
-      data-test-action="increment"
-      class="px-2 py-1 rounded bg-blue-500 text-white hover:bg-blue-600"
-      type="button"
-      {{on "click" this.onIncrement}}
+    <Button
+      @label="Increment"
+      @onClick={{this.onIncrement}}
     >
       Increment +
-    </button>
+    </Button>
   </template>
 }

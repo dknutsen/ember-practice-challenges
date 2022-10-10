@@ -5,6 +5,7 @@ import { component, fn } from '@ember/helper';
 import { on } from '@ember/modifier';
 import pick from 'ember-composable-helpers/helpers/pick';
 import set from 'ember-set-helper/helpers/set';
+import Button from '../ui/button';
 
 const isEmpty = (it) => it === '' || it === undefined || it === null;
 
@@ -28,13 +29,11 @@ class NewItemForm extends Component {
         {{on "change" (pick "target.value" (set this "newTitle"))}}
       />
       {{!-- FIXME: replace with ui button --}}
-      <button
-        data-test-action="newItem"
-        type="submit"
-        disabled={{isEmpty this.newTitle}}
-      >
-        Add
-      </button>
+      <Button
+        @label="Add"
+        @type="submit"
+        @disabled={{isEmpty this.newTitle}}
+      />
     </form>
   </template>
 }
@@ -42,14 +41,11 @@ class NewItemForm extends Component {
 const ListItem = <template>
   <li data-test-list-index={{@index}} data-test-list-item={{@item}} class="my-1">
     {{!-- FIXME: replace with ui button --}}
-    <button
-      data-test-action="done"
-      class="px-2 bg-green-500"
-      type="button"
-      {{on "click" @onDoneClicked}}
-    >
-      Done
-    </button>
+    <Button
+      @label="Done"
+      @theme="success"
+      @onClick={{@onDoneClicked}}
+    />
     <span data-test-item-attribute="title">{{@item}}</span>
   </li>
 </template>
