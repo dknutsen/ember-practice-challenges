@@ -1,5 +1,6 @@
 import BasicTracking from './components/autotracking/basic-tracking';
 import DeepTracking from './components/autotracking/deep-tracking';
+import DefiningModel from './components/basics/defining-model';
 import ClassicToGlimmer from './components/refactoring/classic-to-glimmer';
 
 /**
@@ -19,7 +20,11 @@ export default {
     title: 'Ember Basics',
     challenges: {
       'defining-route': { title: 'Defining a Route' }, // define routes, plain and with dynamic segment
-      'defining-model': { title: 'Defining a Model' }, // create a model (unit test it for completion)
+      'defining-model': {
+        title: 'Defining a Model',
+        notes: 'This challenge involves building a unix-like file system model. Define a model called "file" that has attributes for file basics (name), metadata (createdAt, updatedAt), permissions (userRead, userWrite, userExecute, groupRead, groupWrite, groupExecute, otherRead, otherWrite, otherExecute). It should have relationships for "parent" and "children". It should have a computed property called "isDirectory" that returns true if the file has children. It should have a computed property called "permissions" that returns a unix-like permissions string e.g. "drwxr--r--" based on the values of the permission attributes. It should have a method called "chmod" which accepts a single argument that can either be a string in the format "drwxr--r--" or "rwxr--r--" or a number like 755, and set the permission attributes accordingly. It should also have a setter for the "permissions" property which simply calls the chmod method.',
+        component: DefiningModel,
+      },
       'loading-models': {
         // load query in route and render in template
         title: 'Loading Models',
