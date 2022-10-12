@@ -11,11 +11,11 @@ module('Challenges | basics.loading-models', function(hooks) {
     const users = server.createList('user', 8);
     await visit('/basics/loading-models?id="fake"');
     assert.equal(currentRouteName(), 'basics.loading-models', 'the route can be visited');
-    assert.dom('[data-test-row]').exists({ count: 5 });
+    assert.dom('[data-test-row]').exists({ count: 5 }, 'there are 5 user rows rendered');
     users.slice(0, 5).forEach((user, index) => {
-      assert.dom(`[data-test-row="${index}"] [data-test-column="firstName"]`).hasText(user.firstName);
-      assert.dom(`[data-test-row="${index}"] [data-test-column="lastName"]`).hasText(user.lastName);
-      assert.dom(`[data-test-row="${index}"] [data-test-column="email"]`).hasText(user.email);
+      assert.dom(`[data-test-row="${index}"] [data-test-column="firstName"]`).hasText(user.firstName, `row ${index} user firstName is correct`);
+      assert.dom(`[data-test-row="${index}"] [data-test-column="lastName"]`).hasText(user.lastName, `row ${index} user lastName is correct`);
+      assert.dom(`[data-test-row="${index}"] [data-test-column="email"]`).hasText(user.email, `row ${index} user email is correct`);
     });
   });
 });
