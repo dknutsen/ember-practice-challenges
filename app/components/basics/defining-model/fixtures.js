@@ -2,6 +2,8 @@ import { faker } from '@faker-js/faker';
 
 const fixtures = (store) => {
   try {
+    const fileModelExists = store.modelFor('file');
+    if (!fileModelExists) return;
     const owner = store.createRecord('user', { email: 'root@root.com' });
     const newFile = (name, children) => store.createRecord('file', { name, owner, updatedAt: faker.date.recent(), ...children && { children } });
     return newFile('home', [
