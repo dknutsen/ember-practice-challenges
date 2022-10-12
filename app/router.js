@@ -15,4 +15,6 @@ Router.map(function () {
   this.route('basics', function () {
     this.route('loading-models');
   });
+
+  this.route('secret-clubhouse', { path: '/top-secret/classified/:name' });
 });
