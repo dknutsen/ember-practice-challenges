@@ -1,2 +1,20 @@
 {{page-title "LoadingModels"}}
-{{outlet}}
+
+<table>
+  <thead>
+    <tr>
+      <th class="px-2">First Name</th>
+      <th class="px-2">Last Name</th>
+      <th class="px-2">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each @model as |user index|}}
+      <tr data-test-row={{index}}>
+        <td class="px-2" data-test-column="firstName">{{user.firstName}}</td>
+        <td class="px-2" data-test-column="lastName">{{user.lastName}}</td>
+        <td class="px-2" data-test-column="email">{{user.email}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
