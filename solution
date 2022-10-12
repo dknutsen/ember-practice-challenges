@@ -1,0 +1,29 @@
+#!/usr/bin/env node
+const { exec } = require('node:child_process');
+
+const challenges = {
+  'basics.defining-route': [
+    'app/router.js',
+    'app/controllers/secret-clubhouse.js',
+    'app/templates/secret-clubhouse.hbs',
+  ],
+  'basics.defining-model': [
+    'app/models/file.js',
+  ],
+};
+
+const [challenge] = process.argv.slice(2);
+console.log(`-------------------------------------------------\nSolutions for challenge: ${challenge}\n-------------------------------------------------`);
+const paths = challenges[challenge];
+if (!paths) {
+  console.log('  Solution not found!');
+  return;
+}
+
+exec(`git diff main solutions -- ${paths.join(' ')}`, (error, stdout, stderr) => {
+  if (error) {
+    console.error(`error diffing solution`);
+    return;
+  }
+  console.log(stdout.split('diff --git').join('\ndiff --git'));
+});
