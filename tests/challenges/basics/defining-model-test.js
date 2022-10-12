@@ -17,6 +17,7 @@ const EXPECTED_ATTRS = {
 };
 
 const EXPECTED_RELATIONSHIPS = {
+  owner:    { kind: 'belongsTo', type: 'user' },
   parent:   { kind: 'belongsTo', type: 'file' },
   children: { kind: 'hasMany', type: 'file' },
 };
@@ -126,6 +127,38 @@ module('Challenges | basics.defining-model', function (hooks) {
     const store = this.owner.lookup('service:store');
     const file = store.createRecord('file', { name: 'some-file' });
     file.chmod(777);
+    assert.equal(file.permissions, '-rwxrwxrwx', 'the file permissions are correct');
+    assert.ok(file.userRead, 'user read');
+    assert.ok(file.userWrite, 'user write');
+    assert.ok(file.userExecute, 'user execute');
+    assert.ok(file.groupRead, 'group read');
+    assert.ok(file.groupWrite, 'group write');
+    assert.ok(file.groupExecute, 'group execute');
+    assert.ok(file.otherRead, 'other read');
+    assert.ok(file.otherWrite, 'other write');
+    assert.ok(file.otherExecute, 'other execute');
+  });
+
+  test('the "permissions" setter correctly sets permissions when given a string', function (assert) {
+    const store = this.owner.lookup('service:store');
+    const file = store.createRecord('file', { name: 'some-file' });
+    file.permissions = 'rwxr--r--';
+    assert.equal(file.permissions, '-rwxr--r--', 'the file permissions are correct');
+    assert.ok(file.userRead, 'user read');
+    assert.ok(file.userWrite, 'user write');
+    assert.ok(file.userExecute, 'user execute');
+    assert.ok(file.groupRead, 'group read');
+    assert.notOk(file.groupWrite, 'group write');
+    assert.notOk(file.groupExecute, 'group execute');
+    assert.ok(file.otherRead, 'other read');
+    assert.notOk(file.otherWrite, 'other write');
+    assert.notOk(file.otherExecute, 'other execute');
+  });
+
+  test('the chmod method correctly sets permissions when given a number', function (assert) {
+    const store = this.owner.lookup('service:store');
+    const file = store.createRecord('file', { name: 'some-file' });
+    file.permissions = 777;
     assert.equal(file.permissions, '-rwxrwxrwx', 'the file permissions are correct');
     assert.ok(file.userRead, 'user read');
     assert.ok(file.userWrite, 'user write');

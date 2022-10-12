@@ -34,24 +34,24 @@ export default class ClassicToGlimmer extends Component {
       <tbody>
         {{#if this.currentFile.parent}}
           <tr>
-            <td><LinkyButton @onClick={{fn this.onFileClicked this.currentFile.parent}}>..</LinkyButton></td>
-            <td>{{this.currentFile.parent.permissions}}</td>
-            <td>{{this.currentFile.parent.owner.email}}</td>
-            <td>{{this.currentFile.parent.updatedAt}}</td>
+            <td class="px-2"><LinkyButton @onClick={{fn this.onFileClicked this.currentFile.parent}}>..</LinkyButton></td>
+            <td class="px-2">{{this.currentFile.parent.permissions}}</td>
+            <td class="px-2">{{this.currentFile.parent.owner.email}}</td>
+            <td class="px-2">{{this.currentFile.parent.updatedAt}}</td>
           </tr>
         {{/if}}
         {{#each this.currentFile.children as |child|}}
           <tr>
-            <td>
+            <td class="px-2">
               {{#if child.isDirectory}}
                 <LinkyButton @onClick={{fn this.onFileClicked child}}>{{child.name}}</LinkyButton>
               {{else}}
                 {{child.name}}
               {{/if}}
             </td>
-            <td>{{child.permissions}}</td>
-            <td></td>
-            <td></td>
+            <td class="px-2">{{child.permissions}}</td>
+            <td class="px-2">{{child.owner.email}}</td>
+            <td class="px-2">{{child.updatedAt}}</td>
           </tr>
         {{/each}}
       </tbody>
