@@ -30,7 +30,7 @@ const themes = Object.freeze({
     hover: 'hover:bg-gray-600',
   },
 });
-export const theme = (name) => `${themes[name].default} ${themes[name].hover}`;
+export const themed = (name) => `${themes[name].default} ${themes[name].hover}`;
 
 export const or = (arg, defaultValue) => arg ? arg : defaultValue;
 
