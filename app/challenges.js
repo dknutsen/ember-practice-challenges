@@ -1,3 +1,4 @@
+import JavascriptArrays from './components/javascript/arrays';
 import BasicTracking from './components/autotracking/basic-tracking';
 import DeepTracking from './components/autotracking/deep-tracking';
 import DefiningRoute from './components/basics/defining-route';
@@ -25,6 +26,7 @@ export default {
       },
       arrays: {
         title: 'Arrays',
+        component: JavascriptArrays,
       },
       objects: {
         title: 'Objects',
