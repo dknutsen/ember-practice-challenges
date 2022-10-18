@@ -98,11 +98,6 @@ export const mergeBySize = (arrays = []) => {
 // END - Edit the functions above here
 
 
-/**
- * Everything below here is used for rendering the examples in the challenge app
- */
-
-// this looks better than .toString()
 const printer = obj => JSON.stringify(obj);
 
 const LastNComponent = <template>
