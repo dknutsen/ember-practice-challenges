@@ -1,3 +1,4 @@
+import JavascriptArrays from './components/javascript/arrays';
 import BasicTracking from './components/autotracking/basic-tracking';
 import DeepTracking from './components/autotracking/deep-tracking';
 import DefiningRoute from './components/basics/defining-route';
@@ -17,6 +18,30 @@ import ClassicToGlimmer from './components/refactoring/classic-to-glimmer';
  * Each challenge can have a `component` and/or a `route`
  */
 export default {
+  javascript: {
+    title: 'Javascript',
+    challenges: {
+      variables: {
+        title: 'Variables',
+      },
+      arrays: {
+        title: 'Arrays',
+        component: JavascriptArrays,
+      },
+      objects: {
+        title: 'Objects',
+      },
+      'destructuring-and-splatting': {
+        title: 'Destructuring/Splatting',
+      },
+      'arrow-functions': {
+        title: 'Arrow Functions',
+      },
+      'exports-and-imports': {
+        title: 'Import/Export',
+      },
+    },
+  },
   basics: {
     title: 'Ember Basics',
     challenges: {
@@ -54,6 +79,9 @@ export default {
         title: 'Deep Tracking',
         notes: 'Autotracking simple data types is straightforward, but with complex reference types like arrays or objects there is more nuance. In this challenge we need to fix a todo app so that it can successfully add and remove todos.',
         component: DeepTracking,
+      },
+      'arbitrary-tracking': {
+        title: 'Arbitrary Tracking',
       },
     },
   },
