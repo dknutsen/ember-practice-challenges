@@ -7,7 +7,7 @@ import { array, get, hash } from '@ember/helper';
  * @param {Number} n The number of elements to return from the end of the array
  * @returns {Array} an array of the last n (or array.length if lesser than n) elements
  */
-export const lastN = (array = [], n = 1) => {
+export const lastN = (array, n = 1) => {
 
 }
 
@@ -24,7 +24,7 @@ export const negatorator = (array = []) => {
 /**
  * Write a function that returns the input array but without any yucky elements.
  * A not-yucky element:
- *   - must be > 0
+ *   - must be >= 0
  *   - must not be empty (null, undefined, '', [], {})
  *   - must not be: the letter 'q', the number '13' or the word 'moist'
  *
@@ -54,12 +54,14 @@ export const annoyingCalculator = (operations = []) => {
 /**
  * Write a function that receives an array of arrays and merges them (non-recursively)
  * into one array in order of their size (longest merged first, shortest merged last)
+ * Your function should also support an array of strings
  *
- * Example:
+ * Examples:
  *   [[1,2,3],[4],[5,6]] => [1, 2, 3, 5, 6, 4]
+ *   ['123', '4', '56'] => ['1', '2', '3', '4', '5', '6']
  *
- * @param {Array} array The source array to sanitize
- * @returns {Array} the sanitized array
+ * @param {Array} array The array of arrays or strings to merge
+ * @returns {Array} the merged array
  */
 export const mergeBySize = (arrays = []) => {
 
