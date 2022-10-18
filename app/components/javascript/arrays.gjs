@@ -8,7 +8,10 @@ import { array, get, hash } from '@ember/helper';
  * @returns {Array} an array of the last n (or array.length if lesser than n) elements
  */
 export const lastN = (array, n = 1) => {
-
+  // cover edge cases
+  if (!array || n < 1) return [];
+  // negative slices work from the end
+  return array.slice(-1 * n);
 }
 
 /**
@@ -18,7 +21,8 @@ export const lastN = (array, n = 1) => {
  * @returns {Array} the "negative" of the input array
  */
 export const negatorator = (array = []) => {
-
+  // this is a straightforward `map` application
+  return (array || []).map(n => -n);
 }
 
 /**
@@ -32,7 +36,19 @@ export const negatorator = (array = []) => {
  * @returns {Array} the sanitized array
  */
 export const sanitizer = (array = []) => {
-
+  // this is a mostly straightforward 'filter' application
+  return (array || []).filter(n => {
+    // check null/undefined
+    if (n === null || n === undefined) return false;
+    // check numbers < 0
+    if (typeof n === 'number' && n < 0) return false;
+    // check empty objects
+    if (Object.keys(n).length === 0 && Object.getPrototypeOf(n) === Object.prototype) return false;
+    // check empty arrays and strings
+    if (n.length === 0) return false;
+    // check extra values
+    return !['q', 13, 'moist'].includes(n.toLowerCase ? n.toLowerCase() : n)
+  });
 }
 
 /**
@@ -47,8 +63,19 @@ export const sanitizer = (array = []) => {
  * @param {Array} array The array of "operations" to compute
  * @returns {Array} the calculated result of the "operations"
  */
+// this could also be done as a switch in the reduce or many other ways
+const operators = {
+  '+': (a,b) => a + b,
+  '-': (a,b) => a - b,
+  '*': (a,b) => a * b,
+  '/': (a,b) => a / b,
+  '^': (a,b) => Math.pow(a,b),
+};
 export const annoyingCalculator = (operations = []) => {
-
+  // handle edge cases
+  if (!operations || !operations.length) return [];
+  // this is a strightforward reduce application but there are many other ways to do it
+  return operations.reduce((total, [operator, number]) => operators[operator](total, number), 0);
 }
 
 /**
@@ -64,11 +91,18 @@ export const annoyingCalculator = (operations = []) => {
  * @returns {Array} the merged array
  */
 export const mergeBySize = (arrays = []) => {
-
+  // this is a little dense for a one-liner but it's a simple sort and merge via reduce
+  // the reduce uses spread here for clarity but could just as easily use concat
+  return (arrays || []).sort((a,b) => b.length - a.length).reduce((merged, arr) => [...merged, ...arr], [])
 }
 // END - Edit the functions above here
 
 
+/**
+ * Everything below here is used for rendering the examples in the challenge app
+ */
+
+// this looks better than .toString()
 const printer = obj => JSON.stringify(obj);
 
 const LastNComponent = <template>
