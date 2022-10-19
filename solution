@@ -1,28 +1,8 @@
 #!/usr/bin/env node
 const { exec } = require('node:child_process');
 
-const challenges = {
-  'javascript.arrays': [
-    'app/components/javascript/arrays.gjs'
-  ],
-  'javascript.objects': [
-    'app/components/javascript/objects.gjs'
-  ],
-  'basics.defining-route': [
-    'app/router.js',
-    'app/controllers/secret-clubhouse.js',
-    'app/templates/secret-clubhouse.hbs',
-  ],
-  'basics.defining-model': [
-    'app/models/file.js',
-  ],
-  'basics.loading-models': [
-    'app/routes/basics/loading-models.js',
-  ],
-  'basics.defining-links': [
-    'app/components/basics/defining-links.gjs',
-  ],
-};
+const fs = require('fs');
+const challenges = JSON.parse(fs.readFileSync('./app/challenge-files.json'));
 
 const [challenge] = process.argv.slice(2);
 console.log(`-------------------------------------------------\nSolutions for challenge: ${challenge}\n-------------------------------------------------`);

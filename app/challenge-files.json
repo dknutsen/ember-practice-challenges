@@ -1,0 +1,22 @@
+{
+  "javascript.arrays": [
+    "app/components/javascript/arrays.gjs"
+  ],
+  "javascript.objects": [
+    "app/components/javascript/objects.gjs"
+  ],
+  "basics.defining-route": [
+    "app/router.js",
+    "app/controllers/secret-clubhouse.js",
+    "app/templates/secret-clubhouse.hbs"
+  ],
+  "basics.defining-model": [
+    "app/models/file.js"
+  ],
+  "basics.loading-models": [
+    "app/routes/basics/loading-models.js"
+  ],
+  "basics.defining-links": [
+    "app/components/basics/defining-links.gjs"
+  ]
+}
