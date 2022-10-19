@@ -9,7 +9,7 @@ import { array, hash } from '@ember/helper';
  * @returns {Boolean} true if the key is found in the hash, false if not
  */
 export const hasKey = (hash, key) => {
-
+  return Object.keys(hash || {}).includes(key);
 }
 
 /**
@@ -21,7 +21,7 @@ export const hasKey = (hash, key) => {
  * @returns {Object} the hash, but with keys and values swapped
  */
 export const hashSwap = (hash) => {
-
+  return Object.fromEntries(Object.entries(hash).map(([k,v]) => [v,k]));
 }
 
 /**
@@ -33,7 +33,15 @@ export const hashSwap = (hash) => {
  * @returns {Object} a hash of characters from the string (keys) and their counts (values)
  */
 export const characterCount = (string) => {
-
+  // make sure to convert to lower case, split, and sort the characters (results in sorted keys)
+  const preprocessed = (string?.toLowerCase ? string.toLowerCase() : '').split('').sort();
+  // reduce the array of characters into a hash of counts
+  return preprocessed.reduce((hash, char) => {
+    // test the character to make sure it's alphanumeric
+    if (!/^[a-z0-9]+$/.test(char)) return hash;
+    hash[char] = (hash[char] || 0) + 1
+    return hash;
+  }, { });
 }
 // END - Edit the functions above here
 
