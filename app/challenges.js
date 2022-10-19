@@ -26,14 +26,17 @@ export default {
     challenges: {
       functions: {
         title: 'Functions',
+        notes: 'Javascript functions are crucially important, not only for organizing code but for writing elegant code using higher order functions. These challenges will cover concepts relating to javascript functions.',
         component: JavascriptFunctions,
       },
       arrays: {
         title: 'Arrays',
+        notes: 'Knowing how to examine and manipulate arrays is a must for writing Javascript. These challenges will cover a few of the tools and techniques we have.',
         component: JavascriptArrays,
       },
       objects: {
         title: 'Objects',
+        notes: 'Objects are a foundational concept in Javascript and can be used like hashes or classes. These challenges will cover a few of the techniques for manipulating objects/hashes.',
         component: JavascriptObjects,
       },
     },
@@ -54,7 +57,7 @@ export default {
         component: DefiningModel,
       },
       'loading-models': {
-        // load query in route and render in template
+        notes: 'To complete this challenge, use the route model hook and Ember Data to fetch the first page of "user" models from the fake backend.',
         title: 'Loading Models',
         route: 'basics.loading-models',
       },
@@ -87,7 +90,14 @@ export default {
   },
   helpers: {
     title: 'Helpers',
-    challenges: {},
+    challenges: {
+      'function-helper': {
+        title: 'Function Helper',
+      },
+      'class-helper': {
+        title: 'Class Helper',
+      },
+    },
   },
   modifiers: {
     title: 'Modifiers',

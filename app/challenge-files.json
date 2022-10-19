@@ -1,4 +1,7 @@
 {
+  "javascript.functions": [
+    "app/components/javascript/functions.gjs"
+  ],
   "javascript.arrays": [
     "app/components/javascript/arrays.gjs"
   ],
@@ -18,5 +21,11 @@
   ],
   "basics.defining-links": [
     "app/components/basics/defining-links.gjs"
+  ],
+  "autotracking.basic-tracking": [
+    "app/components/autotracking/basic-tracking.gjs"
+  ],
+  "autotracking.deep-tracking": [
+    "app/components/autotracking/deep-tracking.gjs"
   ]
 }
