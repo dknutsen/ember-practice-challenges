@@ -20,7 +20,7 @@ export default <template>
   <div id="external-link" class="mb-2">
     <div class="font-bold">Link to External URL</div>
     {{!-- PUT YOUR EXTERNAL LINK BELOW --}}
-    <a href="https://google.com" _target="blank" rel="noreferrer noopener">Google it</a> 
+    <a href="https://google.com" target="_blank" rel="noreferrer noopener">Google it</a> 
     {{!-- PUT YOUR EXTERNAL LINK ABOVE --}}
   </div>
 </template>
