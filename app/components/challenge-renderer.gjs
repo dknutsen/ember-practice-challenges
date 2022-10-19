@@ -1,4 +1,5 @@
 import challenges from '../challenges';
+import * as challengeFilesHash from '../challenge-files.json';
 
 const whichToRender = (id) => {
   const [category, challenge] = id.split('.');
@@ -19,6 +20,10 @@ const challengeNotes = (id) => {
   return cat?.challenges?.[challenge]?.notes;
 }
 
+const challengeFiles = (id) => {
+  return challengeFilesHash?.[id];
+}
+
 const isPresent = (thing) => ![null, undefined, '', [], {}].includes(thing);
 
 export default <template>
@@ -29,6 +34,13 @@ export default <template>
     {{#if (isPresent @currentChallenge)}}
       {{!-- Render the challenge notes --}}
       <div class="mb-2">{{challengeNotes @currentChallenge}}</div>
+
+      {{!-- Render the challenge files list --}}
+      <div class="mb-2">Files to edit:
+        <ul class="pl-2">
+          {{#each (challengeFiles @currentChallenge) as |file|}}<li>{{file}}</li>{{/each}}
+        </ul>
+      </div>
 
       {{!-- Render the challenge tests link --}}
       <div class="mb-4"><a href="/tests?filter={{@currentChallenge}}" target="_blank" rel="noopener noreferrer" class="underline text-blue-500">Open challenge tests</a></div>
