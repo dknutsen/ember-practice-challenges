@@ -10,7 +10,7 @@
  */
 export const TOP_SECRET_CODE = 'REDACTED';
 export const classifiedProvider = () => {
-
+  return () => TOP_SECRET_CODE;
 }
 // END - Edit the functions above here
 
