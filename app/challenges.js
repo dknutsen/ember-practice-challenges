@@ -1,3 +1,4 @@
+import JavascriptFunctions from './components/javascript/functions';
 import JavascriptArrays from './components/javascript/arrays';
 import JavascriptObjects from './components/javascript/objects';
 import BasicTracking from './components/autotracking/basic-tracking';
@@ -25,6 +26,10 @@ export default {
       variables: {
         title: 'Variables',
       },
+      functions: {
+        title: 'Functions',
+        component: JavascriptFunctions,
+      },
       arrays: {
         title: 'Arrays',
         component: JavascriptArrays,
@@ -35,9 +40,6 @@ export default {
       },
       'destructuring-and-splatting': {
         title: 'Destructuring/Splatting',
-      },
-      'arrow-functions': {
-        title: 'Arrow Functions',
       },
       'exports-and-imports': {
         title: 'Import/Export',

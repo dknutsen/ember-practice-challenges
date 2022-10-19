@@ -5,6 +5,9 @@ const challenges = {
   'javascript.arrays': [
     'app/components/javascript/arrays.gjs'
   ],
+  'javascript.objects': [
+    'app/components/javascript/objects.gjs'
+  ],
   'basics.defining-route': [
     'app/router.js',
     'app/controllers/secret-clubhouse.js',
