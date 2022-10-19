@@ -14,7 +14,7 @@ export const classifiedProvider = () => {
 }
 // END - Edit the functions above here
 
-const invoker = (func) => func();
+const invoker = (func) => func?.();
 
 const ClassifiedProviderComponent = <template>
   <div class="font-bold">Higher Order Function</div>

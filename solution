@@ -16,6 +16,12 @@ const challenges = {
   'basics.defining-model': [
     'app/models/file.js',
   ],
+  'basics.loading-models': [
+    'app/routes/basics/loading-models.js',
+  ],
+  'basics.defining-links': [
+    'app/components/basics/defining-links.gjs',
+  ],
 };
 
 const [challenge] = process.argv.slice(2);
