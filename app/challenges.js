@@ -1,4 +1,5 @@
 import JavascriptArrays from './components/javascript/arrays';
+import JavascriptObjects from './components/javascript/objects';
 import BasicTracking from './components/autotracking/basic-tracking';
 import DeepTracking from './components/autotracking/deep-tracking';
 import DefiningRoute from './components/basics/defining-route';
@@ -30,6 +31,7 @@ export default {
       },
       objects: {
         title: 'Objects',
+        component: JavascriptObjects,
       },
       'destructuring-and-splatting': {
         title: 'Destructuring/Splatting',
