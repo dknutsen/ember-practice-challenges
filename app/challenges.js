@@ -23,9 +23,6 @@ export default {
   javascript: {
     title: 'Javascript',
     challenges: {
-      variables: {
-        title: 'Variables',
-      },
       functions: {
         title: 'Functions',
         component: JavascriptFunctions,
@@ -37,12 +34,6 @@ export default {
       objects: {
         title: 'Objects',
         component: JavascriptObjects,
-      },
-      'destructuring-and-splatting': {
-        title: 'Destructuring/Splatting',
-      },
-      'exports-and-imports': {
-        title: 'Import/Export',
       },
     },
   },
