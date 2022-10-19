@@ -17,7 +17,7 @@ module('Challenges | basics.defining-links', function(hooks) {
   test('the external link is defined correctly', async function(assert) {
     await visit('/?id=basics.defining-links');
     assert.dom('#external-link a').hasAttribute('href', 'https://google.com', 'the link href is correct');
-    assert.dom('#external-link a').hasAttribute('_target', 'blank', 'the link href is correct');
+    assert.dom('#external-link a').hasAttribute('target', '_blank', 'the link target is correct');
     assert.dom('#external-link a').hasAttribute('rel', 'noreferrer noopener', 'the rel attribute has the correct security attributes');
     assert.dom('#external-link a').hasText('Google it', 'the link text is correct');
   });
