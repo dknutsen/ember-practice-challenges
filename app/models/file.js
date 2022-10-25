@@ -1,8 +1,8 @@
 import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 
 // define some bitmasks for translating permissions e.g. 7 => rwx
-const READ    = 0b100; // also 1 << 2
-const WRITE   = 0b010; // also 1 << 1
+const READ = 0b100; // also 1 << 2
+const WRITE = 0b010; // also 1 << 1
 const EXECUTE = 0b001; // also 1 << 0
 
 export default class FileModel extends Model {
@@ -34,10 +34,11 @@ export default class FileModel extends Model {
   }
 
   get path() {
-    return `${this.belongsTo('parent').value() ? this.get('parent.path') : ''}/${this.name}`;
+    return `${this.belongsTo('parent').value() ? this.parent.get('path') : ''}/${this.name}`;
   }
 
   get permissions() {
+    // prettier-ignore
     return [
       this.isDirectory  ? 'd' : '-',
       this.userRead     ? 'r' : '-',
@@ -77,7 +78,10 @@ export default class FileModel extends Model {
       if (perm[7] === 'w') this.otherWrite = true;
       if (perm[8] === 'x') this.otherExecute = true;
     } else if (typeof newPermissions === 'number') {
-      const digits = newPermissions.toString().split('').map(d => parseInt(d));
+      const digits = newPermissions
+        .toString()
+        .split('')
+        .map(d => parseInt(d));
       if (digits[0] & READ) this.userRead = true;
       if (digits[0] & WRITE) this.userWrite = true;
       if (digits[0] & EXECUTE) this.userExecute = true;
