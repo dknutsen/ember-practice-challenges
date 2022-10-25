@@ -1,11 +1,12 @@
 import JavascriptFunctions from './components/javascript/functions';
 import JavascriptArrays from './components/javascript/arrays';
 import JavascriptObjects from './components/javascript/objects';
-import BasicTracking from './components/autotracking/basic-tracking';
-import DeepTracking from './components/autotracking/deep-tracking';
 import DefiningRoute from './components/basics/defining-route';
 import DefiningModel from './components/basics/defining-model';
 import DefiningLinks from './components/basics/defining-links';
+import DefiningComponent from './components/basics/defining-component';
+import BasicTracking from './components/autotracking/basic-tracking';
+import DeepTracking from './components/autotracking/deep-tracking';
 import ClassicToGlimmer from './components/refactoring/classic-to-glimmer';
 
 /**
@@ -73,7 +74,10 @@ export default {
           'To complete this challenge, create two links: one should be a "route link" which links to an internal application route "basics.defining-links" and also adds query param ?foo=bar, the second link should be an external link to "https://google.com" that opens in a new tab (make sure to include basic security attributes).',
         component: DefiningLinks,
       },
-      'defining-component': { title: 'Defining a Component' }, // define a basic read-only component
+      'defining-component': {
+        title: 'Defining a Component',
+        component: DefiningComponent,
+      },
       'define-service': { title: 'Defining a Service' }, // define simple service (clock?) and inject
       'event-binding': { title: 'Event Binding' }, // bind to events/actions with the "on" modifier
     },
