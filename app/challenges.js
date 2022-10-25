@@ -76,6 +76,8 @@ export default {
       },
       'defining-component': {
         title: 'Defining a Component',
+        notes:
+          'To solve this challenge you must create a simple "tag" component which renders a span tag, gives it some tailwind classes, and accepts a @label and @color argument and renders them appropriately. See the target file for details.',
         component: DefiningComponent,
       },
       'define-service': { title: 'Defining a Service' }, // define simple service (clock?) and inject
@@ -99,6 +101,9 @@ export default {
       },
       'arbitrary-tracking': {
         title: 'Arbitrary Tracking',
+      },
+      memoization: {
+        title: 'Memoization',
       },
     },
   },
