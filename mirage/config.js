@@ -19,7 +19,7 @@ export default function (config) {
 
 function routes() {
   this.resource('users');
-  this.get('/users', function({ users }, { queryParams }) {
+  this.get('/users', function ({ users }, { queryParams }) {
     const { page, perPage } = queryParams;
     const start = (page - 1) * perPage;
     const end = page * perPage;

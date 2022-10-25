@@ -2,17 +2,17 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 
 export default Component.extend({
-  tagName:           'section',
-  classNames:        ['p-4 shadow-md'],
+  tagName: 'section',
+  classNames: ['p-4 shadow-md'],
   classNameBindings: ['bordered:border-2', 'active'],
 
   bordered: false,
-  active:   true,
+  active: true,
 
   editing: false,
-  user:    null,
+  user: null,
 
-  fullName: computed('user.firstName', 'user.lastName', function() {
+  fullName: computed('user.firstName', 'user.lastName', function () {
     return `${this.user.firstName} ${this.user.lastName}`;
   }),
 

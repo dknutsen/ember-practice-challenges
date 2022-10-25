@@ -5,11 +5,10 @@ import { hbs } from 'ember-cli-htmlbars';
 
 const newItemInput = '[data-test-input="newItemTitle"]';
 const newItemAdd = '[data-test-action="Add"]';
-const listItem = (title) => `[data-test-list-item="${title}"]`;
-const listItemTitle = (title) =>
+const listItem = title => `[data-test-list-item="${title}"]`;
+const listItemTitle = title =>
   `[data-test-list-item="${title}"] [data-test-item-attribute="title"]`;
-const listItemDone = (title) =>
-  `[data-test-list-item="${title}"] [data-test-action="Done"]`;
+const listItemDone = title => `[data-test-list-item="${title}"] [data-test-action="Done"]`;
 
 module('Challenges | autotracking.deep-tracking', function (hooks) {
   setupRenderingTest(hooks);
@@ -21,15 +20,9 @@ module('Challenges | autotracking.deep-tracking', function (hooks) {
     await click(newItemAdd);
     assert.dom(listItem('item 1')).exists('"item 1" exists');
     assert.dom(listItem('item 1')).hasTagName('li', '"item 1" has an <li> tag');
-    assert
-      .dom(listItemTitle('item 1'))
-      .hasText('item 1', '"item 1" has label "item 1"');
-    assert
-      .dom(listItemDone('item 1'))
-      .exists('the list item has a "Done" button');
-    assert
-      .dom(listItemDone('item 1'))
-      .hasText('Done', 'the done button has text "Done"');
+    assert.dom(listItemTitle('item 1')).hasText('item 1', '"item 1" has label "item 1"');
+    assert.dom(listItemDone('item 1')).exists('the list item has a "Done" button');
+    assert.dom(listItemDone('item 1')).hasText('Done', 'the done button has text "Done"');
     assert.dom(newItemInput).hasValue('', 'the input value has been cleared');
   });
 
