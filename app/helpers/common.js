@@ -1,6 +1,6 @@
 export const classes = (...params) => {
   return params.filter(s => s && s.constructor === String && s.length > 0).join(' ');
-}
+};
 
 // it's best if we use the full static class names so they don't get purged
 const themes = Object.freeze({
@@ -30,8 +30,6 @@ const themes = Object.freeze({
     hover: 'hover:bg-gray-600',
   },
 });
-export const themed = (name) => `${themes[name].default} ${themes[name].hover}`;
+export const themed = name => `${themes[name].default} ${themes[name].hover}`;
 
-export const or = (arg, defaultValue) => arg ? arg : defaultValue;
-
-
+export const or = (arg, defaultValue) => (arg ? arg : defaultValue);

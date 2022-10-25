@@ -11,7 +11,11 @@ module('Challenges | javascript.functions', function (hooks) {
   module('classifiedProvider', function () {
     test('returns the top secret variable', function (assert) {
       const getTheValue = classifiedProvider();
-      assert.equal(getTheValue(), TOP_SECRET_CODE, 'the top secret code matches the top secret code');
+      assert.strictEqual(
+        getTheValue(),
+        TOP_SECRET_CODE,
+        'the top secret code matches the top secret code'
+      );
     });
   });
 });

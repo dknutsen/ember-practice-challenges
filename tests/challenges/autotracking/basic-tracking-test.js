@@ -4,7 +4,7 @@ import { render, click } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
 const increment = '[data-test-action="Increment"]';
-const message   = '[data-test-label="message"]';
+const message = '[data-test-label="message"]';
 
 module('Challenges | autotracking.basic-tracking', function (hooks) {
   setupRenderingTest(hooks);

@@ -149,10 +149,18 @@ export default {
   accessibility: {
     title: 'Accessibility',
     challenges: {
-      'form-control-labels': { title: 'Form Control Labels' },
-      'table-markup': { title: 'Table Markup' },
-      'color-contrast': { title: 'Color Contrast' },
-      'proper-headings': { title: 'Proper Headings' },
+      'form-control-labels': {
+        title: 'Form Control Labels',
+      },
+      'table-markup': {
+        title: 'Table Markup',
+      },
+      'color-contrast': {
+        title: 'Color Contrast',
+      },
+      'proper-headings': {
+        title: 'Proper Headings',
+      },
     },
   },
   refactoring: {
