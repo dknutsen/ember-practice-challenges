@@ -33,3 +33,8 @@ const themes = Object.freeze({
 export const themed = name => `${themes[name].default} ${themes[name].hover}`;
 
 export const or = (arg, defaultValue) => (arg ? arg : defaultValue);
+
+// This helper simply tells us if the imported component is valid
+// which we need to do in this app to maintain stability because
+// some of the components haven't been defined yet
+export const isRealComponent = component => !!component?.moduleName;
