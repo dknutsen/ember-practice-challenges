@@ -10,33 +10,50 @@ import Button from './ui/button';
 const join = (segments) => segments.join('.');
 
 const SidebarItem = <template>
-  <li class="p-1">
-    <LinkTo @route={{if @route @route "index"}} @query={{hash id=(join (array @prefix @id))}}>{{@title}}</LinkTo>
-  </li>
+  <LinkTo
+    id="sidebar-item"
+    class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md"
+    @route={{if @route @route "index"}}
+    @query={{hash id=(join (array @prefix @id))}}
+  >
+    {{~@title~}}
+  </LinkTo>
 </template>
 
 class SidebarCategory extends Component {
-  @tracked collapsed = true;
+  @tracked collapsed = false;
 
   @action toggle() {
     this.collapsed = !this.collapsed;
   }
 
   <template>
-    <li class="font-bold pt-2">
+    <div class="text-md font-medium text-gray-500 py-1">
       <Button @style="link" @onClick={{this.toggle}}>
-        {{@title}}
-        {{if this.collapsed "[+]" "[-]"}}
+        {{#if this.collapsed}}
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 inline">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+        {{else}}
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 inline">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+          </svg>
+        {{/if}}
+        <span class="font-semibold">
+          {{@title}}
+        </span>
       </Button>
-    </li>
-    {{#unless this.collapsed}}
-      {{yield (component SidebarItem prefix=@id)}}
-    {{/unless}}
+      {{#unless this.collapsed}}
+        <div class="pl-4 pt-1">
+          {{yield (component SidebarItem prefix=@id)}}
+        </div>
+      {{/unless}}
+    </div>
   </template>
 }
 
 export default <template>
-  <ul class="w-64 p-2">
+  <nav class="w-64 p-2">
     {{#each-in challenges as |catId category|}}
       <SidebarCategory @title={{category.title}} @id={{catId}} as |Item|>
         {{#each-in category.challenges as |cid challenge index|}}
@@ -44,5 +61,5 @@ export default <template>
         {{/each-in}}
       </SidebarCategory>
     {{/each-in}}
-  </ul>
+  </nav>
 </template>
