@@ -13,22 +13,6 @@ export default class Ball extends Thing {
     this.color = color;
   }
 
-  get top() {
-    return this.y - this.height * 0.5;
-  }
-
-  get bottom() {
-    return this.y + this.height * 0.5;
-  }
-
-  get left() {
-    return this.x - this.width * 0.5;
-  }
-
-  get right() {
-    return this.x + this.width * 0.5;
-  }
-
   get halfWidth() {
     return this.width * 0.5;
   }

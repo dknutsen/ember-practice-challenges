@@ -16,39 +16,27 @@ import Thing from './defining-service/thing';
 const randf = (max, min = 0) => min + (Math.random() * (max - min));
 const randi = (max, min = 0) => Math.floor(randf(min, max));
 const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
+
 class BounceCanvas extends Component {
   sprites = [
-    ...Array.from(Array(100)).map(() => {
+    ...Array.from(Array(10)).map(() => {
       return new Ball(
-        randf(this.args.width),
-        randf(this.args.height),
+        randf(this.args.width - 5, 5),
+        randf(this.args.height - 5, 5),
         new Vector(randf(10.0, -10.0), randf(10.0, -10.0)),
-        randf(15.0, 5.0),
+        randf(15.0, 8.0),
         colors[randi(colors.length)],
       );
     }),
-    new Block(80, 80, new Vector(8.0, 5.0), 40, 20, "orange"),
   ];
 
-  oldTimeStamp = 0;
-  movingSpeed = 50;
-  constructor() {
-    super(...arguments);
-    const update = (timestamp) => {
-      const secondsPassed = Math.min((timestamp - this.oldTimeStamp) / 1000, 0.1);
-      this.oldTimeStamp = timestamp;
-      this.sprites.forEach(s => s.update({
-        width: this.args.width,
-        height: this.args.height,
-        gravity: 1.0,
-      }, secondsPassed));
-      window.requestAnimationFrame(update);
-    }
-    window.requestAnimationFrame(update);
-  }
-
   <template>
-    <canvas {{canvasRenderer this.sprites}} width={{@width}} height={{@height}} class="border border-black border-solid">
+    <canvas
+      class="border border-black border-solid"
+      width={{@width}}
+      height={{@height}}
+      {{canvasRenderer this.sprites @width @height}}
+    >
       A canvas with moving shapes
     </canvas>
   </template>
@@ -57,7 +45,9 @@ class BounceCanvas extends Component {
 // main challenge component, renders a few canvas components
 export default <template>
   <div class="grid grid-cols-3">
-    <BounceCanvas @width={{600}} @height={{400}} />
+    <BounceCanvas @width={{300}} @height={{200}} />
+    <BounceCanvas @width={{300}} @height={{200}} />
+    <BounceCanvas @width={{300}} @height={{200}} />
   {{!--
     <BounceCanvas @width={{300}} @height={{200}} />
     <BounceCanvas @width={{300}} @height={{200}} />
