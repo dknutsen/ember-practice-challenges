@@ -6,7 +6,6 @@ export default class Thing {
   @tracked x;
   @tracked y;
   @tracked velocity;
-  @tracked speed = 10.0;
 
   get halfWidth() {
     return 0.5;
@@ -45,7 +44,7 @@ export default class Thing {
     context.fillRect(this.x, this.y, 1, 1);
   }
 
-  update({ width, height, gravity, dampen }, elapsed) {
+  update({ width, height, gravity, restitution }, elapsed) {
     const {
       x,
       y,
@@ -54,32 +53,30 @@ export default class Thing {
       velocity: { x: normalizedX, y: normalizedY },
     } = this;
     // move object;
-    const multiplier = elapsed * (gravity ? 1.0 : this.speed);
-    this.x = x + normalizedX * multiplier;
-    this.y = y + normalizedY * multiplier;
+    this.x = x + normalizedX * elapsed;
+    this.y = y + normalizedY * elapsed;
 
-    if (gravity) this.velocity.y = this.velocity.y + 3.0;
-    const elasticity = gravity ? dampen : 1.0;
+    if (gravity) this.velocity.y = this.velocity.y + 9.8;
 
     // wall collisions
     let xdiff = halfWidth - x;
     if (xdiff >= 0 && normalizedX < 0.0) {
-      this.velocity.x = -1 * elasticity * this.velocity.x;
+      this.velocity.x = -1 * restitution * this.velocity.x;
       this.x = halfWidth;
     }
     xdiff = x + halfWidth - width;
     if (xdiff >= 0 && normalizedX > 0.0) {
-      this.velocity.x = -1 * elasticity * this.velocity.x;
+      this.velocity.x = -1 * restitution * this.velocity.x;
       this.x = width - halfWidth;
     }
     let ydiff = halfHeight - y;
     if (ydiff >= 0 && normalizedY < 0.0) {
-      this.velocity.y = -1 * elasticity * this.velocity.y;
+      this.velocity.y = -1 * restitution * this.velocity.y;
       this.y = halfHeight;
     }
     ydiff = y + halfHeight - height;
     if (ydiff >= 0 && normalizedY > 0.0) {
-      this.velocity.y = -1 * elasticity * this.velocity.y;
+      this.velocity.y = -1 * restitution * this.velocity.y;
       this.y = height - halfHeight;
     }
   }

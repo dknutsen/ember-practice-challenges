@@ -1,5 +1,6 @@
 import Modifier from 'ember-modifier';
 import { registerDestructor } from '@ember/destroyable';
+import { inject as service } from '@ember/service';
 import Vector from './vector';
 
 function cleanup(instance) {
@@ -10,18 +11,14 @@ function cleanup(instance) {
 }
 
 export default class CanvasRenderModifier extends Modifier {
+  @service world;
+
   rafId = null;
   oldTimeStamp = 0;
   annotations = [];
   debug = false;
-  dampenFactor = 0.9;
-  gravity = true;
   fps = 0;
   context = null;
-
-  get dampen() {
-    return this.gravity ? this.dampenFactor : 1.0;
-  }
 
   constructor() {
     super(...arguments);
@@ -35,11 +32,13 @@ export default class CanvasRenderModifier extends Modifier {
     registerDestructor(this, cleanup);
   }
 
-  modify(canvas, [sprites, width, height]) {
+  modify(canvas, [sprites], { width, height }) {
     this.width = width;
     this.height = height;
     this.sprites = sprites;
-    if (!this.context) this.context = this.element.getContext('2d');
+    canvas.width = width;
+    canvas.height = height;
+    if (!this.context) this.context = canvas.getContext('2d');
     this.context.clearRect(0, 0, canvas.width, canvas.height);
     this.renderSprites(this.context);
     if (this.debug) this.renderDebug(this.context);
@@ -70,9 +69,13 @@ export default class CanvasRenderModifier extends Modifier {
     const elapsed = Math.min((timestamp - this.oldTimeStamp) / 1000, 0.1);
     this.fps = Math.round(1.0 / elapsed);
     this.oldTimeStamp = timestamp;
-    const { width, height, gravity, dampen } = this;
+    const {
+      width,
+      height,
+      world: { gravity, restitution },
+    } = this;
     this.sprites.forEach(s => {
-      s.update({ width, height, gravity, dampen }, elapsed);
+      s.update({ width, height, gravity, restitution }, elapsed);
     });
     const collisions = [];
     this.calculateCollisions(collisions);
@@ -125,7 +128,7 @@ export default class CanvasRenderModifier extends Modifier {
       let vRelativeVelocity = { x: a.velocity.x - b.velocity.x, y: a.velocity.y - b.velocity.y };
       let speed = vRelativeVelocity.x * vc.normalizedX + vRelativeVelocity.y * vc.normalizedY;
       if (speed < 0) return;
-      let impulse = ((2 * speed) / (a.mass + b.mass)) * this.dampen;
+      let impulse = ((2 * speed) / (a.mass + b.mass)) * this.world.restitution;
       a.velocity.x -= impulse * b.mass * vc.normalizedX;
       a.velocity.y -= impulse * b.mass * vc.normalizedY;
       b.velocity.x += impulse * a.mass * vc.normalizedX;
