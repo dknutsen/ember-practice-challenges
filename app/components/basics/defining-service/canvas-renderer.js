@@ -10,6 +10,9 @@ function cleanup(instance) {
   }
 }
 
+const DEFAULT_RESTITUTION = 1.0;
+const DEFAULT_GRAVITY = false;
+
 export default class CanvasRenderModifier extends Modifier {
   @service world;
 
@@ -72,7 +75,7 @@ export default class CanvasRenderModifier extends Modifier {
     const {
       width,
       height,
-      world: { gravity, restitution },
+      world: { gravity = DEFAULT_GRAVITY, restitution = DEFAULT_RESTITUTION } = {},
     } = this;
     this.sprites.forEach(s => {
       s.update({ width, height, gravity, restitution }, elapsed);
@@ -128,7 +131,8 @@ export default class CanvasRenderModifier extends Modifier {
       let vRelativeVelocity = { x: a.velocity.x - b.velocity.x, y: a.velocity.y - b.velocity.y };
       let speed = vRelativeVelocity.x * vc.normalizedX + vRelativeVelocity.y * vc.normalizedY;
       if (speed < 0) return;
-      let impulse = ((2 * speed) / (a.mass + b.mass)) * this.world.restitution;
+      const restitution = this.world?.restitution || DEFAULT_RESTITUTION;
+      let impulse = ((2 * speed) / (a.mass + b.mass)) * restitution;
       a.velocity.x -= impulse * b.mass * vc.normalizedX;
       a.velocity.y -= impulse * b.mass * vc.normalizedY;
       b.velocity.x += impulse * a.mass * vc.normalizedX;
