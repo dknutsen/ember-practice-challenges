@@ -1,3 +1,12 @@
+import { set as emberSet } from '@ember/object';
+
+export const set = (...positional) => {
+  let [target, path, maybeValue] = positional;
+  return positional.length === 3
+    ? () => emberSet(target, path, maybeValue)
+    : value => emberSet(target, path, value);
+};
+
 export const classes = (...params) => {
   return params.filter(s => s && s.constructor === String && s.length > 0).join(' ');
 };
