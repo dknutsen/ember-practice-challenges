@@ -5,6 +5,7 @@ import DefiningRoute from './components/basics/defining-route';
 import DefiningModel from './components/basics/defining-model';
 import DefiningLinks from './components/basics/defining-links';
 import DefiningComponent from './components/basics/defining-component';
+import DefiningService from './components/basics/defining-service';
 import BasicTracking from './components/autotracking/basic-tracking';
 import DeepTracking from './components/autotracking/deep-tracking';
 import ClassicToGlimmer from './components/refactoring/classic-to-glimmer';
@@ -76,9 +77,14 @@ export default {
       },
       'defining-component': {
         title: 'Defining a Component',
+        notes:
+          'To solve this challenge you must create a simple "tag" component which renders a span tag, gives it some tailwind classes, and accepts a @label and @color argument and renders them appropriately. See the target file for details.',
         component: DefiningComponent,
       },
-      'define-service': { title: 'Defining a Service' }, // define simple service (clock?) and inject
+      'define-service': {
+        title: 'Defining a Service',
+        component: DefiningService,
+      },
       'event-binding': { title: 'Event Binding' }, // bind to events/actions with the "on" modifier
     },
   },
@@ -99,6 +105,9 @@ export default {
       },
       'arbitrary-tracking': {
         title: 'Arbitrary Tracking',
+      },
+      memoization: {
+        title: 'Memoization',
       },
     },
   },
