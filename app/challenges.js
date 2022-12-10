@@ -81,8 +81,10 @@ export default {
           'To solve this challenge you must create a simple "tag" component which renders a span tag, gives it some tailwind classes, and accepts a @label and @color argument and renders them appropriately. See the target file for details.',
         component: DefiningComponent,
       },
-      'define-service': {
+      'defining-service': {
         title: 'Defining a Service',
+        notes:
+          'In this challenge we have a barebones physics system that renders bouncing balls on any number of canvases. We want to create a service that holds a couple "world" parameters and controls world physics across all canvases. You should create a service called "world" and give it three tracked state items: "gravity" a boolean that controls whether gravity is turned on or off, "gravityFactor" the acceleration that gravity imposes if gravity is turned on, "restitution" the value that determines how velocity is changed when when colliding with another object. The service should also have setter actions for these three values for convenience. Once you have the service constructed you should inject it into the WorldBar component in defining-component.gjs and then bind the Switch and NumberInputs to the appropriate values on the service.',
         component: DefiningService,
       },
       'event-binding': { title: 'Event Binding' }, // bind to events/actions with the "on" modifier
