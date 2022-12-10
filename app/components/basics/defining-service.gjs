@@ -1,32 +1,36 @@
 import Component from '@glimmer/component';
 import { on } from '@ember/modifier';
+import { inject as service } from '@ember/service';
 import Button from '../ui/button';
 import Switch from '../ui/switch';
 import NumberInput from '../ui/number-input';
 import BounceCanvas from './defining-service/bounce-canvas';
 
 class WorldBar extends Component {
+  // inject the service
+  @service world;
+
   <template>
     <div class="flex flex-wrap items-center">
       <Switch
         class="pr-4 py-2"
         @label="Gravity"
-        @value={{true}}
-        @onClick={{null}}
+        @value={{this.world.gravity}}
+        @onClick={{this.world.toggleGravity}}
       />
       <NumberInput
         class="pr-4 py-2"
         @label="Gravity Factor"
         @step={{0.1}}
-        @value={{9.8}}
-        @onChange={{null}}
+        @value={{this.world.gravityFactor}}
+        @onChange={{this.world.setGravityFactor}}
       />
       <NumberInput
         class="py-2"
         @label="Restitution"
         @step={{0.01}}
-        @value={{1.0}}
-        @onChange={{null}}
+        @value={{this.world.restitution}}
+        @onChange={{this.world.setRestitution}}
       />
     </div>
   </template>
