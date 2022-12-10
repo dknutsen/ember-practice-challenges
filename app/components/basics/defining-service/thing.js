@@ -44,7 +44,7 @@ export default class Thing {
     context.fillRect(this.x, this.y, 1, 1);
   }
 
-  update({ width, height, gravity, restitution }, elapsed) {
+  update({ width, height, gravity, gravityFactor, restitution }, elapsed) {
     const {
       x,
       y,
@@ -56,7 +56,7 @@ export default class Thing {
     this.x = x + normalizedX * elapsed;
     this.y = y + normalizedY * elapsed;
 
-    if (gravity) this.velocity.y = this.velocity.y + 9.8;
+    if (gravity) this.velocity.y = this.velocity.y + gravityFactor;
 
     // wall collisions
     let xdiff = halfWidth - x;

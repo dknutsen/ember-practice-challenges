@@ -12,6 +12,7 @@ function cleanup(instance) {
 
 const DEFAULT_RESTITUTION = 1.0;
 const DEFAULT_GRAVITY = false;
+const DEFAULT_GRAVITY_FACTOR = 9.8;
 
 export default class CanvasRenderModifier extends Modifier {
   @service world;
@@ -75,10 +76,14 @@ export default class CanvasRenderModifier extends Modifier {
     const {
       width,
       height,
-      world: { gravity = DEFAULT_GRAVITY, restitution = DEFAULT_RESTITUTION } = {},
+      world: {
+        gravity = DEFAULT_GRAVITY,
+        gravityFactor = DEFAULT_GRAVITY_FACTOR,
+        restitution = DEFAULT_RESTITUTION,
+      } = {},
     } = this;
     this.sprites.forEach(s => {
-      s.update({ width, height, gravity, restitution }, elapsed);
+      s.update({ width, height, gravity, gravityFactor, restitution }, elapsed);
     });
     const collisions = [];
     this.calculateCollisions(collisions);
@@ -125,8 +130,8 @@ export default class CanvasRenderModifier extends Modifier {
     }
   }
 
-  processCollisions(collisions) {
-    collisions.forEach(({ a, b }) => {
+  processCollisions(thingCollisions) {
+    thingCollisions.forEach(({ a, b }) => {
       const vc = new Vector(b.x - a.x, b.y - a.y);
       let vRelativeVelocity = { x: a.velocity.x - b.velocity.x, y: a.velocity.y - b.velocity.y };
       let speed = vRelativeVelocity.x * vc.normalizedX + vRelativeVelocity.y * vc.normalizedY;

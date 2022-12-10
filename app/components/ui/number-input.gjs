@@ -63,6 +63,7 @@ export default class NumberInput extends Component {
 
   <template>
     <UIInput
+      @label={{@label}}
       @type="number"
       @disabled={{@disabled}}
       @placeholder={{@placeholder}}
@@ -73,6 +74,7 @@ export default class NumberInput extends Component {
       @onChange={{pick "target.value" this.onChange}}
       @onFocus={{@onFocus}}
       @onBlur={{@onBlur}}
+      ...attributes
     />
   </template>
 }
