@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
 import { on } from '@ember/modifier';
 import { guidFor } from '@ember/object/internals';
+import optional from 'ember-composable-helpers/helpers/optional';
 
 import { classes } from '../../helpers/common';
 
@@ -23,7 +24,7 @@ export default class SwitchComponent extends Component {
           role="switch"
           aria-checked="false"
           aria-labelledby="switch-label-{{inputId}}"
-          {{on "click" @onClick}}
+          {{on "click" (optional @onClick)}}
         >
           <span
             aria-hidden="true"
