@@ -10,23 +10,23 @@ class WorldBar extends Component {
     <div class="flex flex-wrap items-center">
       <Switch
         class="pr-4 py-2"
-        @value={{this.world.gravity}}
         @label="Gravity"
-        @onClick={{this.world.toggleGravity}}
+        @value={{true}}
+        @onClick={{null}}
       />
       <NumberInput
         class="pr-4 py-2"
         @label="Gravity Factor"
         @step={{0.1}}
-        @value={{this.world.gravityFactor}}
-        @onChange={{this.world.setGravityFactor}}
+        @value={{9.8}}
+        @onChange={{null}}
       />
       <NumberInput
         class="py-2"
         @label="Restitution"
         @step={{0.01}}
-        @value={{this.world.restitution}}
-        @onChange={{this.world.setRestitution}}
+        @value={{1.0}}
+        @onChange={{null}}
       />
     </div>
   </template>
