@@ -6,6 +6,7 @@ import DefiningModel from './components/basics/defining-model';
 import DefiningLinks from './components/basics/defining-links';
 import DefiningComponent from './components/basics/defining-component';
 import DefiningService from './components/basics/defining-service';
+import EventBinding from './components/basics/event-binding';
 import BasicTracking from './components/autotracking/basic-tracking';
 import DeepTracking from './components/autotracking/deep-tracking';
 import ClassicToGlimmer from './components/refactoring/classic-to-glimmer';
@@ -87,7 +88,12 @@ export default {
           'In this challenge we have a barebones physics system that renders bouncing balls on any number of canvases. We want to create a service that holds a couple "world" parameters and controls world physics across all canvases. You should create a service called "world" and give it three tracked state items: "gravity" a boolean that controls whether gravity is turned on or off, "gravityFactor" the acceleration that gravity imposes if gravity is turned on, "restitution" the value that determines how velocity is changed when when colliding with another object. The service should also have setter actions for these three values for convenience. Once you have the service constructed you should inject it into the WorldBar component in defining-component.gjs and then bind the Switch and NumberInputs to the appropriate values on the service.',
         component: DefiningService,
       },
-      'event-binding': { title: 'Event Binding' }, // bind to events/actions with the "on" modifier
+      'event-binding': {
+        title: 'Event Binding',
+        notes:
+          'Event binding is an important concept for wiring DOM elements to Javascript actions. In this challenge you should replace the current onsubmit attribute on the form and bind the component onSubmit action to the form "submit" event.',
+        component: EventBinding,
+      },
     },
   },
   autotracking: {

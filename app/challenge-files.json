@@ -15,6 +15,7 @@
     "app/components/basics/defining-service.gjs",
     "app/services/world.js"
   ],
+  "basics.event-binding": ["app/components/basics/event-binding.gjs"],
   "autotracking.basic-tracking": ["app/components/autotracking/basic-tracking.gjs"],
   "autotracking.deep-tracking": ["app/components/autotracking/deep-tracking.gjs"]
 }
