@@ -16,6 +16,7 @@ export default class SwitchComponent extends Component {
           <span class="text-sm font-medium text-gray-900">{{@label}}</span>
         </span>
         <button
+          data-test-switch={{@label}}
           type="button"
           class={{classes
             (if @value "bg-indigo-600" "bg-gray-200")
