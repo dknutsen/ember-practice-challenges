@@ -16,6 +16,7 @@ export default <template>
       class={{classes
         (if (eq style "default") "px-2 py-1 rounded")
         (if (eq style "default") (themed theme))
+        (if @disabled "cursor-not-allowed")
       }}
       disabled={{@disabled}}
       type={{or @type "button"}}
