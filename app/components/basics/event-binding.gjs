@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+import { on } from '@ember/modifier';
 import pick from 'ember-composable-helpers/helpers/pick';
 
 import { set } from 'practice-challenges/helpers/common';
@@ -20,7 +21,7 @@ export default class WorldBar extends Component {
   }
 
   <template>
-    <form onsubmit="return false;">
+    <form {{on "submit" this.onSubmit}}>
       <UIInput
         class="mb-2"
         @label="Name"
