@@ -17,6 +17,7 @@ export default class InputComponent extends Component {
           {{~@label~}}
         </label>
         <input
+          data-test-input={{@label}}
           id="input-{{inputId}}"
           class="w-16"
           accept={{@accept}}
