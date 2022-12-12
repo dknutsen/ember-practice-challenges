@@ -9,6 +9,7 @@ import DefiningService from './components/basics/defining-service';
 import EventBinding from './components/basics/event-binding';
 import BasicTracking from './components/autotracking/basic-tracking';
 import DeepTracking from './components/autotracking/deep-tracking';
+import Memoization from './components/autotracking/memoization';
 import ClassicToGlimmer from './components/refactoring/classic-to-glimmer';
 
 /**
@@ -116,6 +117,7 @@ export default {
       },
       memoization: {
         title: 'Memoization',
+        component: Memoization,
       },
     },
   },
