@@ -13,19 +13,19 @@ import Button from '../ui/button';
  * once every time the number of rows changes
  */
 
-// this variable tracks how many times the numberOfRows computed property is called
-let count = 0;
-
 export default class BasicTracking extends Component {
   @tracked rows = [];
 
+  // this variable tracks how many times the numberOfRows computed property is called
+  count = 0;
+
   get numberOfRows() {
-    count++;
+    this.count++;
     return this.rows.length;
   }
 
   get counterString() {
-    return `rows:${this.numberOfRows} computation count:${count}`;
+    return `rows:${this.numberOfRows} computation count:${this.count}`;
   }
 
   @action
