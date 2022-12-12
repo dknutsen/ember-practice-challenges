@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
+import { cached, tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { on } from '@ember/modifier';
 import { faker } from '@faker-js/faker';
@@ -19,6 +19,13 @@ export default class BasicTracking extends Component {
   // this variable tracks how many times the numberOfRows computed property is called
   count = 0;
 
+  // The @cached decorator is an easy way to memoize a computed property. For more
+  // low-level API check out @glimmer/tracking/primitives/cache.
+  // 
+  // Note that this example is contrived and @cached should only be used for expensive
+  // or frequently recomputed properties (it introduces its own overhead which, like
+  // anything, can build up if overused), 
+  @cached
   get numberOfRows() {
     this.count++;
     return this.rows.length;
