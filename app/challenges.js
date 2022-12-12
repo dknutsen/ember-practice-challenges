@@ -117,6 +117,8 @@ export default {
       },
       memoization: {
         title: 'Memoization',
+        notes:
+          'Memoization is "an optimization technique used primarily to speed up programs by storing the results of expensive operations". In this challenge, you should memoize the numberOfRows computed property so that it is only called once per render, rather than once every time a row is rendered.',
         component: Memoization,
       },
     },

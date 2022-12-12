@@ -39,13 +39,16 @@ export default class BasicTracking extends Component {
   }
 
   <template>
-    <div data-test-label="counterString">
-      {{this.counterString}}
+    <h3 class="text-lg">Random Words</h3>
+    <div class="flex items-center mb-4">
+      <div data-test-label="counterString" class="mr-4">
+        {{this.counterString}}
+      </div>
+      <Button
+        @label="Add Row"
+        @onClick={{this.addNewRow}}
+      />
     </div>
-    <Button
-      @label="Add Row"
-      @onClick={{this.addNewRow}}
-    />
     <table>
       <tbody>
         {{#each this.rows as |word index|}}
