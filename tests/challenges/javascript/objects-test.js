@@ -1,11 +1,11 @@
 import { module, test } from 'qunit';
-import { setupTest } from 'practice-challenges/tests/helpers';
+import { setupTest } from 'ember-practice-challenges/tests/helpers';
 
 import {
   hasKey,
   hashSwap,
   characterCount,
-} from 'practice-challenges/components/javascript/objects';
+} from 'ember-practice-challenges/components/javascript/objects';
 
 module('Challenges | javascript.objects', function (hooks) {
   setupTest(hooks);

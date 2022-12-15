@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import { setupTest } from 'practice-challenges/tests/helpers';
+import { setupTest } from 'ember-practice-challenges/tests/helpers';
 
 const EXPECTED = {
   firstName: 'raw',

@@ -1,11 +1,11 @@
 {
-  "name": "practice-challenges",
+  "name": "ember-practice-challenges",
   "version": "0.0.0",
   "private": true,
-  "description": "Small description for practice-challenges goes here",
-  "repository": "",
+  "description": "An Ember.js app containing test-driven challenges for practicing Javascript and Ember concepts and patterns",
+  "repository": "https://github.com/dknutsen/ember-practice-challenges",
   "license": "MIT",
-  "author": "",
+  "author": "Dan Knutsen (https://github.com/dknutsen)",
   "directories": {
     "doc": "doc",
     "test": "tests"

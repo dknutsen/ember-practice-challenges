@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import { setupTest } from 'practice-challenges/tests/helpers';
+import { setupTest } from 'ember-practice-challenges/tests/helpers';
 
 module('Unit | Route | routing/nested-routes', function (hooks) {
   setupTest(hooks);
