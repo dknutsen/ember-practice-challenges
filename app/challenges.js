@@ -115,7 +115,8 @@ export default {
       },
       'arbitrary-tracking': {
         title: 'Arbitrary Tracking',
-        notes: 'WORK IN PROGRESS - UNDER CONSTRUCTION',
+        notes:
+          'One powerful feature of Autotracking is that it can be used to track data on arbitrary classes, not just components. In this challenge we will build a generic Node class which we will use to power already-defined UI components to make a nested checkbox list with editing capabilities. This class is simple and abstract and could be used to back any tree-like graph. Build the Node class to make the checkbox tree work properly!',
         component: ArbitraryTracking,
       },
       memoization: {
