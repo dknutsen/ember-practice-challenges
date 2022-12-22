@@ -25,9 +25,10 @@ export default class Checkbox extends Component {
   }
 
   <template>
-    <div class="relative flex items-center">
+    <div data-test-checkbox={{@label}} class="relative flex items-center">
       <div class="h-5">
         <input
+          data-test-checkbox-input={{@label}}
           class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
           id={{this.uniqueId}}
           name="comments"
@@ -44,4 +45,3 @@ export default class Checkbox extends Component {
     </div>
   </template>
 }
-
