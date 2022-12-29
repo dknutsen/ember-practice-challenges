@@ -35,7 +35,7 @@ import ActionButton from 'ember-practice-challenges/components/ui/action-button'
  *   - a computed getter called "isRoot" that returns true if the node has no parent
  *   - a computed getter called "isLeaf" that returns true if the node has no children
  *   - a computed getter called "activeState" that returns `nodeActiveState(this)`
- *   - a constructor which initializes name and children, and each child's `parent` property as `this`
+ *   - a constructor which initializes name and children to the given args, and initializes each child's `parent` property as `this`
  */
 
 class Node {
@@ -97,7 +97,7 @@ class CheckboxItem extends Component {
   }
 
   <template>
-    <div class="pt-1">
+    <div class="pt-1" data-test-checkbox-item={{@node.name}}>
       <Checkbox @label={{@node.name}} @onClick={{this.onClick}} @value={{@node.activeState}}>
         <:right>
           <div class="flex items-center ml-1">
@@ -112,8 +112,8 @@ class CheckboxItem extends Component {
       {{#if this.isEditing}}
         <form class="ml-4 flex items-center" {{on "submit" this.editingClicked}}>
           Edit:
-          <UIInput @value={{@node.name}} @onChange={{pick "target.value" (set @node "name")}} />
-          <ActionButton @icon={{component DoneIcon}} @label="Done editing name" @type="submit" />
+          <UIInput data-test-checkbox-name-input={{@node.name}} @value={{@node.name}} @onChange={{pick "target.value" (set @node "name")}} />
+          <ActionButton data-test-checkbox-name-submit={{@node.name}} @icon={{component DoneIcon}} @label="Done editing name" @type="submit" />
         </form>
       {{/if}}
       <div class="ml-4">
