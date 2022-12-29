@@ -39,11 +39,35 @@ import ActionButton from 'ember-practice-challenges/components/ui/action-button'
  */
 
 class Node {
-  // add properties here
+  // tracked properties can be added to any class
+  // here we just need a few simple tracked properties
+  @tracked name = '';
+  @tracked parent = null;
+  @tracked children = [];
+  @tracked isActive = false;
+
+  // just like on a component these getters will auto update when the
+  // tracked data dependencies change
+  get isRoot() {
+    return !!this.parent;
+  }
+
+  get isLeaf() {
+    return this.children.length === 0;
+  }
+
+  get activeState() {
+    return nodeActiveState(this);
+  }
 
   constructor(name, children = []) {
-    // fill out constructor here
+    this.name = name;
+    this.children = children;
+    this.children.forEach(c => c.parent = this);
   }
+
+  // in a real-world example we might add some actions here for setting state
+  // more easily from a template, etc. but that would bloat this challenge
 }
 
 /**
