@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import { setupTest } from 'practice-challenges/tests/helpers';
+import { setupTest } from 'ember-practice-challenges/tests/helpers';
 
 import {
   lastN,
@@ -7,7 +7,7 @@ import {
   sanitizer,
   annoyingCalculator,
   mergeBySize,
-} from 'practice-challenges/components/javascript/arrays';
+} from 'ember-practice-challenges/components/javascript/arrays';
 
 module('Challenges | javascript.arrays', function (hooks) {
   setupTest(hooks);

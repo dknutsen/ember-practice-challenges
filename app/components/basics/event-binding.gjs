@@ -4,9 +4,9 @@ import { action } from '@ember/object';
 import { on } from '@ember/modifier';
 import pick from 'ember-composable-helpers/helpers/pick';
 
-import { set } from 'practice-challenges/helpers/common';
-import UIInput from 'practice-challenges/components/ui/input';
-import UIButton from 'practice-challenges/components/ui/button';
+import { set } from 'ember-practice-challenges/helpers/common';
+import UIInput from 'ember-practice-challenges/components/ui/input';
+import UIButton from 'ember-practice-challenges/components/ui/button';
 
 const not = value => !value || value === '';
 
