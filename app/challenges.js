@@ -11,6 +11,8 @@ import BasicTracking from './components/autotracking/basic-tracking';
 import DeepTracking from './components/autotracking/deep-tracking';
 import ArbitraryTracking from './components/autotracking/arbitrary-tracking';
 import Memoization from './components/autotracking/memoization';
+import FunctionHelper from './components/helpers/function-helper';
+import ClassHelper from './components/helpers/class-helper';
 import ClassicToGlimmer from './components/refactoring/classic-to-glimmer';
 
 /**
@@ -130,12 +132,18 @@ export default {
   helpers: {
     title: 'Helpers',
     challenges: {
-      //'function-helper': {
-      //  title: 'Function Helper',
-      //},
-      //'class-helper': {
-      //  title: 'Class Helper',
-      //},
+      'function-helper': {
+        title: 'Function Helper',
+        notes:
+          'Simple helpers can be defined as simple functions. Write a function helper that repeats a given string (first positional arg) a certain number of times (second positional arg) and uses either a given "delimiter" (named arg "delimiter") or a single space to separate the repititions',
+        component: FunctionHelper,
+      },
+      'class-helper': {
+        title: 'Class Helper',
+        notes:
+          'Classes can be used to defined helpers in more complex cases, such as when the helper needs its own state or needs service injections. To complete this challenge, write a class-based helper which injects the store service and returns the number of records in the store of the given type (first positional arg)',
+        component: ClassHelper,
+      },
     },
   },
   modifiers: {
