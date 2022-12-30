@@ -74,7 +74,22 @@ const chunk = (array, chunkSize = 2) => {
  * BEGIN: Only edit below this comment
  */
 const Calculator = <template>
-  YOUR HELPERS HERE
+  {{!--
+    Reduce is the final operation so it is the outermost helper
+    It receives the chunked array, the compute helper, and initial value 0
+    The array to chunk is the result of split and then parsify on the string
+
+    The defaulted args could be omitted for brevity:
+    {{reduce (chunk (parsify (split @string))) compute}}
+  --}}
+  {{reduce
+    (chunk
+      (parsify (split @string ' '))
+      2
+    )
+    compute
+    0
+  }}
 </template>
 /**
  * END: Do not edit below this comment
