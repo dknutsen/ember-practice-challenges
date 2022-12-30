@@ -5,7 +5,7 @@ import { inject as service } from '@ember/service';
 import UIButton from 'ember-practice-challenges/components/ui/button';
 
 /**
- * Replace the const below with a class based helper that:
+ * Replace the const below with a class based helper (of the same name) that:
  *   - takes a single string argument, the model name
  *   - injects the store service
  *   - returns the number of records in the store of the given model name
@@ -13,6 +13,9 @@ import UIButton from 'ember-practice-challenges/components/ui/button';
 
 const usersCount = () => 'REPLACE THIS WITH HELPER';
 
+/**
+ * Do not edit below this comment
+ */
 export default class ClassHelperComponent extends Component {
   @service store;
 
