@@ -1,4 +1,5 @@
 import Component from '@ember/component';
+import Helper from '@ember/component/helper';
 import { action } from '@ember/object'
 import { inject as service } from '@ember/service';
 
@@ -11,7 +12,17 @@ import UIButton from 'ember-practice-challenges/components/ui/button';
  *   - returns the number of records in the store of the given model name
  */
 
-const usersCount = () => 'REPLACE THIS WITH HELPER';
+class usersCount extends Helper {
+  // inject the store
+  @service store;
+
+  // The `compute` method is the major prerequisite of a class-based helper
+  // A real world helper would need more graceful edge case handling (e.g.
+  // if the given model is wrong format or if that model is undefined)
+  compute([modelName]) {
+    return this.store.peekAll(modelName).length;
+  }
+}
 
 /**
  * Do not edit below this comment
