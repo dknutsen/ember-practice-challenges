@@ -12,6 +12,9 @@ const repeater = (string, count, { delimiter = " " } = { }) => {
   return new Array(count).fill(string).join(delimiter);
 };
 
+/**
+ * Do not edit below this comment
+ */
 export default <template>
   <div id="row1">Input ("alone" 1) Output: '{{repeater "alone" 1}}'</div>
   <div id="row2">Input ("hello" 5) Output: '{{repeater "hello" 5}}'</div>
