@@ -83,13 +83,13 @@ const Calculator = <template>
 export default <template>
   <div id="row1">
     {{#let "+ 2 + 3 + 4" as |string|}}
-      Input: "{{string}}"
+      Input: "{{string}}",
       Output: <Calculator @string={{string}} /> {{! => 9 }}
     {{/let}}
   </div>
   <div id="row2">
     {{#let "+ 4 ^ 2 * 2 + 2 - 1 / 3" as |string|}}
-      Input: "{{string}}"
+      Input: "{{string}}",
       Output: <Calculator @string={{string}} /> {{! => 11 }}
     {{/let}}
   </div>
