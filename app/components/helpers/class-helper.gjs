@@ -25,7 +25,7 @@ export default class ClassHelperComponent extends Component {
   }
 
   <template>
-    <div>The number of users in the store is: {{usersCount 'user'}}</div>
+    <div data-test-label="message">The number of users in the store is: {{usersCount 'user'}}</div>
     <UIButton @label="Add User" @onClick={{this.addUser}} />
   </template>
 }

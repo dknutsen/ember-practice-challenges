@@ -1,10 +1,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-practice-challenges/tests/helpers';
-import { render, click } from '@ember/test-helpers';
+import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
-
-const increment = '[data-test-action="Increment"]';
-const message = '[data-test-label="message"]';
 
 module('Challenges | helpers.function-helper', function (hooks) {
   setupRenderingTest(hooks);
