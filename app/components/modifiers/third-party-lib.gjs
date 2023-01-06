@@ -8,15 +8,23 @@
  * Hint: look at the Chart.js docs to see how to import/invoke a Chart
  * Hint: use ember-modifier (already a dependency)
  */
+import Chart from 'chart.js/auto';
+import { modifier } from 'ember-modifier';
 
 // [Begin] Write your modifier here!
-
+// This can be accomplished with a simple one-line functional modifier
+const chartjs = modifier((element, [config]) => {
+  new Chart(element, config);
+}, {
+  // this is to avoid deprecated eager evaluation, not strictly necessary
+  eager: false
+});
 // [End]
 
 // Add your modifier to the canvas in this component, and don't
 // forget to pass the @config arg to it
 const MyChart = <template>
-  <canvas>
+  <canvas {{chartjs @config}}>
     {{@altText}}
   </canvas>
 </template>
