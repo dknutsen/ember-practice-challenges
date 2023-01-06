@@ -14,6 +14,7 @@ import AutotrackingMemoization from './components/autotracking/memoization';
 import HelpersFunctionHelper from './components/helpers/function-helper';
 import HelpersClassHelper from './components/helpers/class-helper';
 import HelpersComplexInvocation from './components/helpers/complex-invocation';
+import ModifiersThirdPartyLib from './components/modifiers/third-party-lib';
 import RefactoringClassicToGlimmer from './components/refactoring/classic-to-glimmer';
 
 /**
@@ -155,7 +156,14 @@ export default {
   },
   modifiers: {
     title: 'Modifiers',
-    challenges: {},
+    challenges: {
+      'third-party-lib': {
+        title: '3rd Party Library',
+        notes:
+          'One great use for modifiers is encapsulating third party libraries that interact directly with DOM elements. In this challenge you should write a modifier to render a chart using the popular canvas-based Chart.js library (already added to the app dependencies).',
+        component: ModifiersThirdPartyLib,
+      },
+    },
   },
   routing: {
     title: 'Routing',
