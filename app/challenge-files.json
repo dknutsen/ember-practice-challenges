@@ -22,5 +22,6 @@
   "autotracking.memoization": ["app/components/autotracking/memoization.gjs"],
   "helpers.function-helper": ["app/components/helpers/function-helper.gjs"],
   "helpers.class-helper": ["app/components/helpers/class-helper.gjs"],
-  "helpers.complex-invocation": ["app/components/helpers/complex-invocation.gjs"]
+  "helpers.complex-invocation": ["app/components/helpers/complex-invocation.gjs"],
+  "modifiers.third-party-lib": ["app/components/modifiers/third-party-lib.gjs"]
 }
