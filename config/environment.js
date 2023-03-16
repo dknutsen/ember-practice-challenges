@@ -1,12 +1,13 @@
 'use strict';
 
 module.exports = function (environment) {
-  let ENV = {
-    modulePrefix: 'practice-challenges',
+  const ENV = {
+    modulePrefix: 'ember-practice-challenges',
     environment,
     rootURL: '/',
     locationType: 'history',
     EmberENV: {
+      EXTEND_PROTOTYPES: false,
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. EMBER_NATIVE_DECORATOR_SUPPORT: true
