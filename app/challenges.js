@@ -15,6 +15,7 @@ import HelpersFunctionHelper from './components/helpers/function-helper';
 import HelpersClassHelper from './components/helpers/class-helper';
 import HelpersComplexInvocation from './components/helpers/complex-invocation';
 import ModifiersThirdPartyLib from './components/modifiers/third-party-lib';
+import ModifiersMutatingElement from './components/modifiers/mutating-element';
 import RefactoringClassicToGlimmer from './components/refactoring/classic-to-glimmer';
 
 /**
@@ -157,6 +158,12 @@ export default {
   modifiers: {
     title: 'Modifiers',
     challenges: {
+      'mutating-element': {
+        title: 'Mutating the Element',
+        notes:
+          'Modifiers provide a clean way to interact directly with an element in Javascript, and they can participate directly in the Reactivity system. This makes them ideal for mutating (or modifying!) the element based on changes in state. In this challenge we will build a contrived modifier that shrinks list items as the number of items increases.',
+        component: ModifiersMutatingElement,
+      },
       'third-party-lib': {
         title: '3rd Party Library',
         notes:
