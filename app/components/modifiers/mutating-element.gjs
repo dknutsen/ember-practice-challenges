@@ -18,15 +18,7 @@ import UIButton from 'ember-practice-challenges/components/ui/button';
  */
 
 // [Begin] Write your modifier here!
-import { modifier } from 'ember-modifier';
-const squeezer = modifier((element, [itemsCount]) => {
-  const siblings = itemsCount - 1;
-  const fontSize = 48 - (siblings > 18 ? 36 : siblings * 2);
-  element.style.fontSize = `${fontSize}px`;
-}, {
-  // this is to avoid deprecated eager evaluation, not strictly necessary
-  eager: false
-});
+
 // [End]
 
 export default class SqueezyList extends Component {
