@@ -49,14 +49,14 @@ class Node {
 /**
  * NOTE: do not edit below this point
  */
-const changeNodeState = (node, newCheckedState) => {
-  if (node.isLeaf) {
-    node.isActive = newCheckedState === 'checked' ? true : false;
-    return;
-  }
-  node.children?.forEach(c => changeNodeState(c, newCheckedState));
-};
 
+/**
+ * This function calculates a node's "active state" based on its own state
+ * as well as that of its children.
+ *   - if the node is a leaf and/or it and all children are active, return 'checked'
+ *   - if the node is a leaf and/or it and all children are inactive return 'unchecked'
+ *   - if the node has children that are both active and inactive, return 'partial'
+ */
 const nodeActiveState = ({ isLeaf, isActive, children }) => {
   if (isLeaf) return isActive ? 'checked' : 'unchecked';
   const { checked, unchecked, partial } = children.map(child => child.activeState).reduce((counter, state) => {
@@ -68,14 +68,24 @@ const nodeActiveState = ({ isLeaf, isActive, children }) => {
   return 'partial';
 };
 
+/**
+ * This component represents a "checkbox item" in a nested tree, backed by the Node class
+ * It supplements the basic UI checkbox component with "action buttons" for performing
+ * three operations:
+ *   - Add child: adds a new child to this checkbox with default "New Item" name
+ *   - Edit name: opens an edit form for changing the checkbox name
+ *   - Delete: deletes the checkbox and all children
+ */
 class CheckboxItem extends Component {
   @tracked isEditing = false;
 
+  /* handle checkbox click */
   @action onClick() {
     const { node } = this.args;
-    changeNodeState(node, node.activeState === 'checked' ? 'unchecked' : 'checked');
+    this.changeNodeState(node, node.activeState === 'checked' ? 'unchecked' : 'checked');
   }
 
+  /* handle add child click */
   @action
   addChild() {
     const child = new Node('New Item');
@@ -83,21 +93,36 @@ class CheckboxItem extends Component {
     this.args.node.children = [...(this.args.node.children || []), child];
   }
 
+  /* handle delete click */
   @action
   removeChild() {
+    // A better way to do this would probably be telling the parent to delete us
+    // rather than us reaching into the parent to delete ourselves
     const parent = this.args.node.parent;
     if (!parent) return;
     parent.children = parent.children.filter(c => c !== this.args.node);
   }
 
+  /* handle edit button click */
   @action
   editingClicked(event) {
     event?.preventDefault?.();
     this.isEditing = !this.isEditing;
   }
 
+  /* check a checkbox and recursively check its children, if any */
+  @action
+  changeNodeState(node, newCheckedState) {
+    if (node.isLeaf) {
+      node.isActive = newCheckedState === 'checked' ? true : false;
+      return;
+    }
+    node.children?.forEach(c => this.changeNodeState(c, newCheckedState));
+  }
+
   <template>
     <div class="pt-1" data-test-checkbox-item={{@node.name}}>
+      {{! render "this" checkbox }}
       <Checkbox @label={{@node.name}} @onClick={{this.onClick}} @value={{@node.activeState}}>
         <:right>
           <div class="flex items-center ml-1">
@@ -109,6 +134,8 @@ class CheckboxItem extends Component {
           </div>
         </:right>
       </Checkbox>
+
+      {{! name editing form if editing checkbox name }}
       {{#if this.isEditing}}
         <form class="ml-4 flex items-center" {{on "submit" this.editingClicked}}>
           Edit:
@@ -116,6 +143,8 @@ class CheckboxItem extends Component {
           <ActionButton data-test-checkbox-name-submit={{@node.name}} @icon={{component DoneIcon}} @label="Done editing name" @type="submit" />
         </form>
       {{/if}}
+
+      {{! render checkbox children }}
       <div class="ml-4">
         {{#each @node.children as |child|}}
           <CheckboxItem @node={{child}} />
