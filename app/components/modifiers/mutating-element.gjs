@@ -48,8 +48,12 @@ export default class SqueezyList extends Component {
       <UIButton class="ml-4" @label="Remove Item" @onClick={{this.popItem}} />
     </div>
     <ul class="h-128">
-      {{#each this.items as |item|}}
-        <li class="flex items-center transition-[font-size]" {{squeezer this.items.length}}>
+      {{#each this.items as |item index|}}
+        <li
+          data-test-item={{index}}
+          class="flex items-center transition-[font-size]"
+          {{squeezer this.items.length}}
+        >
           <span>{{~item~}}</span>
         </li>
       {{/each}}
