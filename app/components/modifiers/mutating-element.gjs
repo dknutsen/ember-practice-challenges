@@ -44,7 +44,6 @@ export default class SqueezyList extends Component {
         <li
           data-test-item={{index}}
           class="flex items-center transition-[font-size]"
-          {{squeezer this.items.length}}
         >
           <span>{{~item~}}</span>
         </li>
