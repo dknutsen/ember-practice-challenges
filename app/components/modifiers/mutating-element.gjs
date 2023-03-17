@@ -10,7 +10,7 @@ import UIButton from 'ember-practice-challenges/components/ui/button';
  * Using ember-modifier, write a modifier below
  * Then attach it to the <li> in the component at the bottom.
  * The modifier should change the font size of the list item:
- *   - if there is only one item the font size should be 48
+ *   - if there is only one item the font size should be 48px
  *   - for every additional item the font size (of all items) should be 2px smaller
  *   - the minimum font size should be 12px at which point the font stops shrinking
  *
