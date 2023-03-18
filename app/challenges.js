@@ -170,12 +170,13 @@ export default {
           'One great use for modifiers is encapsulating third party libraries that interact directly with DOM elements. In this challenge you should write a modifier to render a chart using the popular canvas-based Chart.js library (already added to the app dependencies).',
         component: ModifiersThirdPartyLib,
       },
+      //'dom-observation': { title: 'dom-observation' },
     },
   },
   routing: {
     title: 'Routing',
     challenges: {
-      //'route-model': {
+      //'parent-model': {
       //  title: 'Forwarding Parent Model',
       //  route: 'routing.parent-model',
       //},
@@ -191,7 +192,13 @@ export default {
   },
   'ember-data': {
     title: 'Ember Data',
-    challenges: {},
+    challenges: {
+      //'transforms': { title: 'Transforms' },
+      //'sync-relationships': { title: 'Sync Relationships' },
+      //'async-relationships': { title: 'Async Relationships' },
+      //'serializers': { title: 'Adapters' },
+      //'adapters': { title: 'Serializers' },
+    },
   },
   async: {
     title: 'Async',
@@ -225,12 +232,12 @@ export default {
   refactoring: {
     title: 'Refactoring',
     challenges: {
-      //'classic-to-glimmer': {
-      //  title: 'Classic to Glimmer',
-      //  notes:
-      //    'In this challenge we\'ll refactor a "classic" Ember Component to a Glimmer component. Note that the intent is to go from classic => glimmer but not necessarily al the way to strict-mode/SFC',
-      //  component: RefactoringClassicToGlimmer,
-      //},
+      'classic-to-glimmer': {
+        title: 'Classic to Glimmer',
+        notes:
+          'In this challenge we\'ll refactor a "classic" Ember Component to a Glimmer component. Note that the intent is to go from classic => glimmer but not necessarily al the way to strict-mode/SFC',
+        component: RefactoringClassicToGlimmer,
+      },
       //'glimmer-to-sfc': {
       //  title: 'Glimmer to SFC',
       //  notes:
