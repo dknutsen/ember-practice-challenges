@@ -11,7 +11,7 @@ const uniqueId = self => guidFor(self);
 export default class SwitchComponent extends Component {
   <template>
     {{#let (uniqueId this) as |inputId|}}
-      <div class="flex items-center" ...attributes>
+      <div class="flex items-center flex-1 mb-2" ...attributes>
         <span class="mr-3" id="switch-label-{{inputId}}">
           <span class="text-sm font-medium text-gray-900">{{@label}}</span>
         </span>

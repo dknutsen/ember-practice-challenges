@@ -21,6 +21,10 @@ export default Component.extend({
   }),
 
   actions: {
+    toggleEdit() {
+      this.set('editing', !this.get('editing'));
+    },
+
     save() {
       this.user.save();
     },

@@ -9,17 +9,17 @@ const uniqueId = self => guidFor(self);
 export default class InputComponent extends Component {
   <template>
     {{#let (uniqueId this) as |inputId|}}
-      <div class="flex items-center" ...attributes>
+      <div class="flex items-center flex-1" ...attributes>
         <label
           for="input-{{inputId}}"
-          class="mr-3 block text-sm font-medium text-gray-700"
+          class="mr-3 block text-sm font-medium text-gray-700 min-w-[10%]"
         >
           {{~@label~}}
         </label>
         <input
           data-test-input={{@label}}
           id="input-{{inputId}}"
-          class="w-16"
+          class="min-w-[20%]"
           accept={{@accept}}
           value={{@value}}
           type={{@type}}
