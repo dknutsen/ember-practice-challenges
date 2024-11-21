@@ -1,33 +1,24 @@
 /* eslint-disable */
-import Component from '@ember/component';
-import { computed } from '@ember/object';
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
+export default class UserCard extends Component {
+  @tracked editing = false;
+  @tracked user = null;
 
-export default Component.extend({
-  tagName: 'section',
-  attributeBindings: ['data-test-component'],
-  classNames: ['p-4 shadow-md'],
-  classNameBindings: ['bordered:border-2', 'active'],
+  get fullName() {
+    return `${this.args.user?.firstName} ${this.args.user?.lastName}`;
+  }
 
-  'data-test-component': 'user-card',
+  get active() {
+    return this.args.active ?? true;
+  }
 
-  bordered: false,
-  active: true,
+  toggleEdit = () => {
+    this.set('editing', !this.get('editing'));
+  };
 
-  editing: false,
-  user: null,
-
-  fullName: computed('user.firstName', 'user.lastName', function () {
-    return `${this.user?.firstName} ${this.user?.lastName}`;
-  }),
-
-  actions: {
-    toggleEdit() {
-      this.set('editing', !this.get('editing'));
-    },
-
-    save() {
-      this.user.save();
-    },
-  },
-});
+  save = () => {
+    this.user.save();
+  };
+}
 /* eslint-enable */

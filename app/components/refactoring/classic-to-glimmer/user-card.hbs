@@ -1,50 +1,60 @@
-<div data-test-card="title" class="font-bold text-lg">{{this.fullName}}</div>
-<div class="p-2">
-  {{#if this.editing}}
-    <form {{action "save" on="submit"}}>
-      {{#each-in
-        (hash firstName="First Name" lastName="Last Name" email="Email")
-        as |attribute theLabel|
-      }}
-        <div data-test-attribute={{theLabel}} class="flex pb-2">
-          <Ui::Input
-            class="w-24"
-            id={{attribute}}
-            name={{attribute}}
-            @label={{theLabel}}
-            @type="text"
-            @value={{get this.user attribute}}
-          />
-        </div>
-      {{/each-in}}
-    </form>
-  {{else}}
-    <dl class="table">
-      {{#each-in
-        (hash firstName="First Name" lastName="Last Name" email="Email")
-        as |attribute label|
-      }}
-        <div
-          data-test-attribute={{label}}
-          class="flex justify-between table-row"
-        >
-          <dt class="table-cell p-1 font-extralight">{{label}}</dt>
-          <dd class="table-cell p-1 pl-3">{{get this.user attribute}}</dd>
-        </div>
-      {{/each-in}}
-    </dl>
-  {{/if}}
-  <div class="flex p-2">
+<section
+  data-test-component="user-card"
+  class={{concat
+    "p-4 "
+    "shadow-md "
+    (if @bordered "border-2 ")
+    (if this.active "active")
+  }}
+>
+  <div data-test-card="title" class="font-bold text-lg">{{this.fullName}}</div>
+  <div class="p-2">
     {{#if this.editing}}
-      <Ui::Button
-        class="mr-2"
-        @label="Cancel"
-        @theme="boring"
-        @onClick={{action "toggleEdit"}}
-      />
-      <Ui::Button @label="Save" @type="submit" />
+      <form {{on "submit" this.save}}>
+        {{#each-in
+          (hash firstName="First Name" lastName="Last Name" email="Email")
+          as |attribute theLabel|
+        }}
+          <div data-test-attribute={{theLabel}} class="flex pb-2">
+            <Ui::Input
+              class="w-24"
+              id={{attribute}}
+              name={{attribute}}
+              @label={{theLabel}}
+              @type="text"
+              @value={{get @user attribute}}
+            />
+          </div>
+        {{/each-in}}
+      </form>
     {{else}}
-      <Ui::Button @label="Edit" @onClick={{action "toggleEdit"}} />
+      <dl class="table">
+        {{#each-in
+          (hash firstName="First Name" lastName="Last Name" email="Email")
+          as |attribute label|
+        }}
+          <div
+            data-test-attribute={{label}}
+            class="flex justify-between table-row"
+          >
+            <dt class="table-cell p-1 font-extralight">{{label}}</dt>
+            <dd class="table-cell p-1 pl-3">{{get @user attribute}}</dd>
+          </div>
+        {{/each-in}}
+      </dl>
     {{/if}}
+    <div class="flex p-2">
+      {{#if this.editing}}
+        <Ui::Button
+          class="mr-2"
+          @label="Cancel"
+          @theme="boring"
+          @onClick={{this.toggleEdit}}
+        />
+        <Ui::Button @label="Save" @type="submit" />
+      {{else}}
+        <Ui::Button @label="Edit" @onClick={{this.toggleEdit}} />
+      {{/if}}
+    </div>
   </div>
-</div>
+</section>
