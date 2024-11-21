@@ -24,5 +24,9 @@
   "helpers.class-helper": ["app/components/helpers/class-helper.gjs"],
   "helpers.complex-invocation": ["app/components/helpers/complex-invocation.gjs"],
   "modifiers.third-party-lib": ["app/components/modifiers/third-party-lib.gjs"],
-  "modifiers.mutating-element": ["app/components/modifiers/mutating-element.gjs"]
+  "modifiers.mutating-element": ["app/components/modifiers/mutating-element.gjs"],
+  "refactoring.classic-to-glimmer": [
+    "app/components/refactoring/classic-to-glimmer/user-card.js",
+    "app/components/refactoring/classic-to-glimmer/user-card.hbs"
+  ]
 }
