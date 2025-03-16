@@ -7,28 +7,31 @@ import BounceCanvas from './defining-service/bounce-canvas';
 
 class WorldBar extends Component {
   <template>
-    <div class="flex flex-wrap items-center">
+    <div class="flex flex-wrap items-center justify-between">
       <Switch
         class="pr-4 py-2"
         @label="Gravity"
         @value={{true}}
         @onClick={{null}}
       />
-      <NumberInput
-        class="pr-4 py-2"
-        @label="Gravity Factor"
-        @step={{0.1}}
-        @value={{9.8}}
-        @onChange={{null}}
-      />
-      <NumberInput
-        class="py-2"
-        @label="Restitution"
-        @step={{0.01}}
-        @value={{1.0}}
-        @onChange={{null}}
-      />
+      <div class="flex">
+        <NumberInput
+          class="pr-4 py-2"
+          @label="Gravity Factor"
+          @step={{0.1}}
+          @value={{9.8}}
+          @onChange={{null}}
+        />
+        <NumberInput
+          class="py-2"
+          @label="Restitution"
+          @step={{0.01}}
+          @value={{1.0}}
+          @onChange={{null}}
+        />
+      </div>
     </div>
+    <div class="divider"></div>
   </template>
 }
 
