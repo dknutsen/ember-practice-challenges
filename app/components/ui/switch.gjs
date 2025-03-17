@@ -11,6 +11,18 @@ const uniqueId = self => guidFor(self);
 export default class SwitchComponent extends Component {
   <template>
     {{#let (uniqueId this) as |inputId|}}
+      <label class="fieldset-label">
+        {{@label}}
+        <input
+          aria-labelledby="switch-label-{{inputId}}"
+          type="checkbox"
+          checked="checked"
+          class="toggle"
+          role="switch"
+          {{on "click" (optional @onClick)}}
+        />
+      </label>
+      {{!--
       <div class="flex items-center flex-1 mb-2" ...attributes>
         <span class="mr-3" id="switch-label-{{inputId}}">
           <span class="text-sm font-medium text-gray-900">{{@label}}</span>
@@ -20,7 +32,7 @@ export default class SwitchComponent extends Component {
           type="button"
           class={{classes
             (if @value "bg-indigo-600" "bg-gray-200")
-            "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            "relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-hidden focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
           }}
           role="switch"
           aria-checked="false"
@@ -36,6 +48,7 @@ export default class SwitchComponent extends Component {
           ></span>
         </button>
       </div>
+      --}}
     {{/let}}
   </template>
 }
