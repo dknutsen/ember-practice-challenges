@@ -14,6 +14,7 @@ export default class SwitchComponent extends Component {
       <label class="fieldset-label">
         {{@label}}
         <input
+          data-test-switch={{@label}}
           aria-labelledby="switch-label-{{inputId}}"
           type="checkbox"
           checked="checked"
