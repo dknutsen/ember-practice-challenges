@@ -24,6 +24,7 @@ export default class BasicTracking extends Component {
     </div>
     <Button
       @label="Increment"
+      @theme="primary"
       @onClick={{this.onIncrement}}
     >
       Increment +

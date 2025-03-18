@@ -9,7 +9,7 @@ const SelectOption = <template>
 
 export default <template>
   <select
-    class="py-1 px-2 m-2 rounded leading-tight focus:outline-none border"
+    class="py-1 px-2 m-2 rounded-sm leading-tight focus:outline-hidden border"
     ...attributes
     {{on "change" (pick "target.value" @onChange)}}
   >

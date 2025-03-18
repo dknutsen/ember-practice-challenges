@@ -11,28 +11,29 @@ class WorldBar extends Component {
   @service world;
 
   <template>
-    <div class="flex flex-wrap items-center">
+    <div class="flex flex-wrap items-center justify-between">
       <Switch
         class="pr-4 py-2"
         @label="Gravity"
         @value={{this.world.gravity}}
         @onClick={{this.world.toggleGravity}}
       />
-      <NumberInput
-        class="pr-4 py-2"
-        @label="Gravity Factor"
-        @step={{0.1}}
-        @value={{this.world.gravityFactor}}
-        @onChange={{this.world.setGravityFactor}}
-      />
-      <NumberInput
-        class="py-2"
-        @label="Restitution"
-        @step={{0.01}}
-        @value={{this.world.restitution}}
-        @onChange={{this.world.setRestitution}}
-      />
+      <div class="flex">
+        <NumberInput
+          @label="Gravity Factor"
+          @step={{0.1}}
+          @value={{this.world.gravityFactor}}
+          @onChange={{this.world.setGravityFactor}}
+        />
+        <NumberInput
+          @label="Restitution"
+          @step={{0.01}}
+          @value={{this.world.restitution}}
+          @onChange={{this.world.setRestitution}}
+        />
+      </div>
     </div>
+    <div class="divider"></div>
   </template>
 }
 

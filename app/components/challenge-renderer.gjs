@@ -46,11 +46,11 @@ export default <template>
       <div class="mb-4"><a href="/tests?filter={{@currentChallenge}}" target="_blank" rel="noopener noreferrer" class="underline text-blue-500">Open challenge tests</a></div>
 
       {{!-- Render the "challenge zone" --}}
-      <div id="challenge-zone" class="bg-white relative p-2 pt-6 border-dashed border-2 border-gray-400">
+      <div id="challenge-zone" class="relative p-2 pt-6 border-dashed border-2 border-gray-400">
         <span class="text-xs font-extralight absolute top-0 left-1">Challenge Zone</span>
 
         {{!-- Render the challenge component, if there is one --}}
-        {{#let (whichToRender @currentChallenge) as |ChallengeComponent|}} 
+        {{#let (whichToRender @currentChallenge) as |ChallengeComponent|}}
           <ChallengeComponent />
         {{/let}}
 
