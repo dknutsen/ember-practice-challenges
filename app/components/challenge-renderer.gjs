@@ -36,26 +36,32 @@ export default <template>
       <div class="mb-2">{{challengeNotes @currentChallenge}}</div>
 
       {{!-- Render the challenge files list --}}
-      <div class="mb-2">Files to edit:
-        <ul class="pl-2">
-          {{#each (challengeFiles @currentChallenge) as |file|}}<li>{{file}}</li>{{/each}}
-        </ul>
+      <div role="alert" class="alert alert-info alert-soft">
+        <div>
+          <div>These are the files you will need to edit:</div>
+          <ul class="pl-2 py-2">
+            {{#each (challengeFiles @currentChallenge) as |file|}}
+              <li><pre data-prefix=">"><code>{{file}}</code></pre></li>
+            {{/each}}
+          </ul>
+        </div>
       </div>
 
-      {{!-- Render the challenge tests link --}}
-      <div class="mb-4"><a href="/tests?filter={{@currentChallenge}}" target="_blank" rel="noopener noreferrer" class="underline text-blue-500">Open challenge tests</a></div>
-
       {{!-- Render the "challenge zone" --}}
-      <div id="challenge-zone" class="relative p-2 pt-6 border-dashed border-2 border-gray-400">
-        <span class="text-xs font-extralight absolute top-0 left-1">Challenge Zone</span>
+      <div class="mockup-browser border bg-base-300 border-base-300 w-full">
+        <div class="mockup-browser-toolbar justify-between">
+          <div class="text-sm">The Challenge Zone</div>
+          <div><a href="/tests?filter={{@currentChallenge}}" target="_blank" rel="noopener noreferrer" class="underline text-blue-500">Open challenge tests</a></div>
+        </div>
+        <div class="p-6">
+          {{!-- Render the challenge component, if there is one --}}
+          {{#let (whichToRender @currentChallenge) as |ChallengeComponent|}}
+            <ChallengeComponent />
+          {{/let}}
 
-        {{!-- Render the challenge component, if there is one --}}
-        {{#let (whichToRender @currentChallenge) as |ChallengeComponent|}}
-          <ChallengeComponent />
-        {{/let}}
-
-        {{!-- this is where a route would be rendered for route-based challenges --}}
-        {{yield}}
+          {{!-- this is where a route would be rendered for route-based challenges --}}
+          {{yield}}
+        </div>
       </div>
     {{/if}}
   </div>
