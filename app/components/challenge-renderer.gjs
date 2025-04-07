@@ -1,5 +1,6 @@
 import challenges from '../challenges';
 import * as challengeFilesHash from '../challenge-files.json';
+import renderMarkdown from '../modifiers/render-markdown';
 
 const whichToRender = (id) => {
   const [category, challenge] = id.split('.');
@@ -33,36 +34,40 @@ export default <template>
 
     {{#if (isPresent @currentChallenge)}}
       {{!-- Render the challenge notes --}}
-      <div class="mb-2">{{challengeNotes @currentChallenge}}</div>
+      <div class="mb-2 prose" {{renderMarkdown (challengeNotes @currentChallenge)}}></div>
 
       {{!-- Render the challenge files list --}}
-      <div role="alert" class="alert alert-info alert-soft">
-        <div>
-          <div>These are the files you will need to edit:</div>
-          <ul class="pl-2 py-2">
-            {{#each (challengeFiles @currentChallenge) as |file|}}
-              <li><pre data-prefix=">"><code>{{file}}</code></pre></li>
-            {{/each}}
-          </ul>
+      {{#if (challengeFiles @currentChallenge)}}
+        <div role="alert" class="alert alert-info alert-soft">
+          <div>
+            <div>These are the files you will need to edit:</div>
+            <ul class="pl-2 py-2">
+              {{#each (challengeFiles @currentChallenge) as |file|}}
+                <li><pre data-prefix=">"><code>{{file}}</code></pre></li>
+              {{/each}}
+            </ul>
+          </div>
         </div>
-      </div>
+      {{/if}}
 
       {{!-- Render the "challenge zone" --}}
-      <div class="mockup-browser border bg-base-300 border-base-300 w-full">
-        <div class="mockup-browser-toolbar justify-between">
-          <div class="text-sm">The Challenge Zone</div>
-          <div><a href="/tests?filter={{@currentChallenge}}" target="_blank" rel="noopener noreferrer" class="underline text-blue-500">Open challenge tests</a></div>
-        </div>
-        <div class="p-6">
-          {{!-- Render the challenge component, if there is one --}}
-          {{#let (whichToRender @currentChallenge) as |ChallengeComponent|}}
-            <ChallengeComponent />
-          {{/let}}
+      {{#let (whichToRender @currentChallenge) as |ChallengeComponent|}}
+        {{#if ChallengeComponent}}
+          <div class="mockup-browser border bg-base-300 border-base-300 w-full">
+            <div class="mockup-browser-toolbar justify-between">
+              <div class="text-sm">The Challenge Zone</div>
+              <div><a href="/tests?filter={{@currentChallenge}}" target="_blank" rel="noopener noreferrer" class="underline text-blue-500">Open challenge tests</a></div>
+            </div>
+            <div class="p-6">
+              {{!-- Render the challenge component, if there is one --}}
+                <ChallengeComponent />
 
-          {{!-- this is where a route would be rendered for route-based challenges --}}
-          {{yield}}
-        </div>
-      </div>
+              {{!-- this is where a route would be rendered for route-based challenges --}}
+              {{yield}}
+            </div>
+          </div>
+        {{/if}}
+      {{/let}}
     {{/if}}
   </div>
 </template>

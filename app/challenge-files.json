@@ -1,5 +1,5 @@
 {
-  "javascript.functions": ["app/components/javascript/functions.gjs"],
+  "javascript.higher-order-functions": ["app/components/javascript/higher-order-functions.gjs"],
   "javascript.arrays": ["app/components/javascript/arrays.gjs"],
   "javascript.objects": ["app/components/javascript/objects.gjs"],
   "basics.defining-route": [

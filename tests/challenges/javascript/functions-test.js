@@ -4,7 +4,7 @@ import { setupTest } from 'ember-practice-challenges/tests/helpers';
 import {
   TOP_SECRET_CODE,
   classifiedProvider,
-} from 'ember-practice-challenges/components/javascript/functions';
+} from 'ember-practice-challenges/components/javascript/higher-order-functions';
 
 module('Challenges | javascript.functions', function (hooks) {
   setupTest(hooks);

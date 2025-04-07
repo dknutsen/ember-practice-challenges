@@ -1,6 +1,5 @@
-import JavascriptFunctions from './components/javascript/functions';
-import JavascriptArrays from './components/javascript/arrays';
-import JavascriptObjects from './components/javascript/objects';
+import JavaScript from './components/javascript';
+
 import BasicsDefiningRoute from './components/basics/defining-route';
 import BasicsDefiningModel from './components/basics/defining-model';
 import BasicsDefiningLinks from './components/basics/defining-links';
@@ -21,9 +20,9 @@ import RefactoringClassicToGlimmer from './components/refactoring/classic-to-gli
 /**
  * This hash organizes all the challenge components into categories
  *
- * Categories have a title (and could have other metadata)
+ * Modules / categories have a title (and could have other metadata)
  *
- * Each category has a hash of challenges, which each have title/etc and component
+ * Each module / category has a hash of challenges, which each have title/etc and component
  *
  * The hash keys are the "ids" used to look up the challenges from the sidebar
  * and query params
@@ -31,29 +30,7 @@ import RefactoringClassicToGlimmer from './components/refactoring/classic-to-gli
  * Each challenge can have a `component` and/or a `route`
  */
 export default {
-  javascript: {
-    title: 'Javascript',
-    challenges: {
-      functions: {
-        title: 'Functions',
-        notes:
-          'Javascript functions are crucially important, not only for organizing code but for writing elegant code using higher order functions. These challenges will cover concepts relating to javascript functions.',
-        component: JavascriptFunctions,
-      },
-      arrays: {
-        title: 'Arrays',
-        notes:
-          'Knowing how to examine and manipulate arrays is a must for writing Javascript. These challenges will cover a few of the tools and techniques we have.',
-        component: JavascriptArrays,
-      },
-      objects: {
-        title: 'Objects',
-        notes:
-          'Objects are a foundational concept in Javascript and can be used like hashes or classes. These challenges will cover a few of the techniques for manipulating objects/hashes.',
-        component: JavascriptObjects,
-      },
-    },
-  },
+  javascript: JavaScript,
   basics: {
     title: 'Ember Basics',
     challenges: {
@@ -190,8 +167,18 @@ export default {
       //'query-params': { title: 'Query Params' }, // add query params and transition with them
     },
   },
-  'ember-data': {
-    title: 'Ember Data',
+  'ember-data-legacy': {
+    title: 'Ember Data (Legacy)',
+    challenges: {
+      //'transforms': { title: 'Transforms' },
+      //'sync-relationships': { title: 'Sync Relationships' },
+      //'async-relationships': { title: 'Async Relationships' },
+      //'serializers': { title: 'Adapters' },
+      //'adapters': { title: 'Serializers' },
+    },
+  },
+  'warp-drive': {
+    title: 'Warp Drive',
     challenges: {
       //'transforms': { title: 'Transforms' },
       //'sync-relationships': { title: 'Sync Relationships' },

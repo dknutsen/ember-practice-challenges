@@ -38,6 +38,7 @@
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
     "@tailwindcss/postcss": "^4.0.14",
+    "@tailwindcss/typography": "^0.5.16",
     "broccoli-asset-rev": "^3.0.0",
     "chart.js": "^4.1.2",
     "concurrently": "^8.2.2",
@@ -90,5 +91,9 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "dependencies": {
+    "dompurify": "^3.2.5",
+    "marked": "^15.0.7"
   }
 }

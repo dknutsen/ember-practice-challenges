@@ -21,6 +21,18 @@ const ClassifiedProviderComponent = <template>
   <div class="mb-2">output: {{invoker (classifiedProvider)}}</div>
 </template>
 
-export default <template>
+const JavascriptFunctions = <template>
   <ClassifiedProviderComponent />
 </template>
+
+export default JavascriptFunctions;
+
+const notes = `
+Javascript functions are crucially important, not only for organizing code but for writing elegant code using higher order functions. These challenges will cover concepts relating to javascript functions.
+`;
+
+export const javascriptFunctions = {
+  title: 'Functions',
+  notes,
+  component: JavascriptFunctions,
+}
