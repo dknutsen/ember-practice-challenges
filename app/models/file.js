@@ -25,9 +25,9 @@ export default class FileModel extends Model {
   @attr('boolean') otherExecute;
 
   // relationships
-  @belongsTo('user', { inverse: null }) owner;
-  @belongsTo('file', { inverse: 'children' }) parent;
-  @hasMany('file', { inverse: 'parent' }) children;
+  @belongsTo('user', { inverse: null, async: true }) owner;
+  @belongsTo('file', { inverse: 'children', async: true }) parent;
+  @hasMany('file', { inverse: 'parent', async: true }) children;
 
   get isDirectory() {
     return !!this.hasMany('children').value()?.length;
