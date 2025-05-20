@@ -80,7 +80,7 @@ export default <template>
 
     {{#if (isPresent @currentChallenge)}}
       {{!-- Render the challenge notes --}}
-      <div class="mb-2 prose" {{renderMarkdown (challengeNotes @currentChallenge)}}></div>
+      <div class="my-4 prose" {{renderMarkdown (challengeNotes @currentChallenge)}}></div>
 
       {{!-- Render the challenge files list --}}
       {{#if (challengeFiles @currentChallenge)}}

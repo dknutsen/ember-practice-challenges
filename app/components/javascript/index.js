@@ -1,3 +1,4 @@
+import Variables from './variables';
 import HigherOrderFunctions from './higher-order-functions';
 import Arrays from './arrays';
 import Objects from './objects';
@@ -13,6 +14,13 @@ You should know the basics of JavaScript including:
 - Functions
 `;
 const variablesNotes = `
+This is not a deep-dive on variables but serves as a quick refresher on variable behavior, scoping, and a few common quirks that can trip you up.
+
+You’ll practice:
+
+* Declaring variables with ${'`'}let${'`'}, ${'`'}const${'`'}, and ${'`'}var${'`'}
+* Understanding how scope and hoisting affect variable values
+* Getting a feel for how JavaScript treats types and reassignment
 `;
 const functionsNotes = `
 `;
@@ -34,6 +42,7 @@ export default {
     variables: {
       title: 'Variables',
       notes: variablesNotes,
+      component: Variables,
     },
     functions: {
       title: 'Functions',
