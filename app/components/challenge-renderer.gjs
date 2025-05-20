@@ -1,24 +1,52 @@
 import challenges from '../challenges';
 import * as challengeFilesHash from '../challenge-files.json';
 import renderMarkdown from '../modifiers/render-markdown';
+import { LinkTo } from '@ember/routing';
+import { hash } from '@ember/helper';
 
-const whichToRender = (id) => {
+const idToChallenge = (id) => {
   const [category, challenge] = id.split('.');
-  return challenges?.[category]?.challenges?.[challenge]?.component;
+  return { category, challenge };
+}
+
+const categoryFromId = (id) => {
+  const { category } = idToChallenge(id);
+  return challenges?.[category];
+}
+
+const challengeFromId = (id) => {
+  const { challenge } = idToChallenge(id);
+  const categoryConfig = categoryFromId(id);
+  return categoryConfig?.challenges?.[challenge];
 }
 
 const challengeTitle = (id) => {
-  const [category, challenge] = id.split('.');
-  if (!category || !challenge) return 'Select a challenge to get started!';
-  const cat = challenges?.[category];
-  return `${cat?.title}: ${cat?.challenges?.[challenge]?.title}`;
+  const { challenge } = idToChallenge(id);
+  const categoryConfig = categoryFromId(id);
+  const challengeConfig = challengeFromId(id);
+  if (!categoryConfig || !challengeConfig) return 'Select a challenge to get started!';
+  return `${categoryConfig.title}: ${challengeConfig?.title}`;
 }
 
 const challengeNotes = (id) => {
-  const [category, challenge] = id.split('.');
-  if (!category || !challenge) return '';
-  const cat = challenges?.[category];
-  return cat?.challenges?.[challenge]?.notes;
+  const challengeConfig = challengeFromId(id);
+  return challengeConfig?.notes ?? '';
+}
+
+const whichToRender = (id) => {
+  const challengeConfig = challengeFromId(id);
+  return challengeConfig?.component;
+}
+
+const prevAndNext = (id) => {
+  const { category, challenge } = idToChallenge(id);
+  const categoryConfig = categoryFromId(id);
+  const challenges = Object.entries(categoryConfig.challenges);
+  const result = { };
+  const index = challenges.findIndex(([challengeId]) => challengeId === challenge);
+  if (index > 0) result.prev = `${category}.${challenges[index - 1][0]}`;
+  if (index < challenges.length - 1) result.next = `${category}.${challenges[index + 1][0]}`;
+  return result;
 }
 
 const challengeFiles = (id) => {
@@ -27,10 +55,28 @@ const challengeFiles = (id) => {
 
 const isPresent = (thing) => ![null, undefined, '', [], {}].includes(thing);
 
+const loggy = console.log;
+
 export default <template>
   <div class="p-6">
     {{!-- Render the challenge title --}}
-    <h2 class="font-bold text-lg mb-2">{{challengeTitle @currentChallenge}}</h2>
+    <div class="flex items-center justify-between">
+      <h2 class="font-bold text-lg mb-2">{{challengeTitle @currentChallenge}}</h2>
+      <div class="join grid grid-cols-2">
+        {{#let (prevAndNext @currentChallenge) as |links|}}
+          <LinkTo
+            class="join-item btn btn-outline"
+            @route="index"
+            @query={{if links.prev (hash id=links.prev) (hash)}}
+          >Previous</LinkTo>
+          <LinkTo
+            class="join-item btn btn-outline"
+            @route="index"
+            @query={{if links.next (hash id=links.next) (hash)}}
+          >Previous</LinkTo>
+        {{/let}}
+      </div>
+    </div>
 
     {{#if (isPresent @currentChallenge)}}
       {{!-- Render the challenge notes --}}
