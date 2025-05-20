@@ -73,7 +73,7 @@ export default <template>
             class="join-item btn btn-outline"
             @route="index"
             @query={{if links.next (hash id=links.next) (hash)}}
-          >Previous</LinkTo>
+          >Next</LinkTo>
         {{/let}}
       </div>
     </div>
